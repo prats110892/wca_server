@@ -1,0 +1,2 @@
+ID_TABLE = "GeoID"
+RELATIONSHIP_CHILDREN_TABLE_NAME = "RelationshipChildren"
