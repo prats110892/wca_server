@@ -1,15 +1,15 @@
 class ID_Table:
     table_name = "GEO_ID"
-    data_types_all_string = True
-    var1 = "Id"#"GEO.id"
-    var2 = "Id2"#"GEO.id2"
-    var3 = "Geography"#"GEO.display-label"
+    data_types_all = "string" #set to false if more than one data type, then define type1, type2, ... for var1, var2, ...
+    var1 = "Id" #"GEO.id"
+    var2 = "Id2" #"GEO.id2"
+    var3 = "Geography" #"GEO.display-label"
 
 class Median_Age_Sex_Table:
     table_name = "Age Brackets"
     Id = "Id"
     Id_type = "string"
-    data_types_all_int = True
+    data_types_all = "int"
     var1 = "Total"
     var2 = "Under 5 years"
     var3 = "5 to 9 years"
