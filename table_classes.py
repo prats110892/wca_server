@@ -1,11 +1,9 @@
 class ID_Table:
     table_name = "GEO_ID"
+    data_types_all_string = True
     var1 = "Id"#"GEO.id"
-    type1 = "string"
     var2 = "Id2"#"GEO.id2"
-    type2 = "string"
     var3 = "Geography"#"GEO.display-label"
-    type3 = "string"
 
 class Median_Age_Sex_Table:
     table_name = "Age Brackets"
