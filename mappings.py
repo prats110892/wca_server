@@ -30,7 +30,7 @@ def mapFunction_median_age_sex(sheetName) :
 		row = xl_sheet.row(i)
 		insertDataQuery += "('%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d,\
                                %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d,\
-                               %d, %d, '%s', %d, %d, %d, %d, %d, %d, %d, %d, %d),\
+                               %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d),\
                                " %(row[0].value,
 																int(row[3].value), #B
 																int(row[5].value+row[29].value), #C
@@ -56,16 +56,15 @@ def mapFunction_median_age_sex(sheetName) :
 																int(row[25].value+row[49].value), #W
 																int(row[26].value+row[50].value), #X
 																int(row[27].value+row[51].value), #Y
-																'null', #Z
-																int(row[3].value), #AA
-																int(row[5].value+row[29].value), #AB
-																int(row[6].value+row[7].value+row[8].value+row[30].value+row[31].value+row[32].value), #AC
-																int(row[9].value+row[10].value+row[11].value+row[12].valuerow[33].value+row[34].value+row[35].value+row[36].value), #AD
-																int(row[13].value+row[14].value+row[15].value+row[37].value+row[38].value+row[39].value), #AE
-																int(row[16].value+row[17].value+row[18].value+row[19].value+row[20].value+row[21].value+row[40].value+row[41].value+row[42].value+row[43].value+row[44].value+row[45].value), #AF
-																int(row[22].value+row[23].value+row[24].value+row[25].value+row[26].value+row[27].value+row[46].value+row[47].value+row[48].value+row[49].value+row[50].value+row[51].value), #AG
-																int(row[25].value+row[26].value+row[27].value+row[49].value+row[50].value+row[51].value), #AH
-																int(row[27].value+row[51].value)) #AI
+																int(row[3].value), #Z
+																int(row[5].value+row[29].value), #AA
+																int(row[6].value+row[7].value+row[8].value+row[30].value+row[31].value+row[32].value), #AB
+																int(row[9].value+row[10].value+row[11].value+row[12].valuerow[33].value+row[34].value+row[35].value+row[36].value), #AC
+																int(row[13].value+row[14].value+row[15].value+row[37].value+row[38].value+row[39].value), #AD
+																int(row[16].value+row[17].value+row[18].value+row[19].value+row[20].value+row[21].value+row[40].value+row[41].value+row[42].value+row[43].value+row[44].value+row[45].value), #AE
+																int(row[22].value+row[23].value+row[24].value+row[25].value+row[26].value+row[27].value+row[46].value+row[47].value+row[48].value+row[49].value+row[50].value+row[51].value), #AF
+																int(row[25].value+row[26].value+row[27].value+row[49].value+row[50].value+row[51].value), #AG
+																int(row[27].value+row[51].value)) #AH
 
 	insertDataQuery = insertDataQuery[:-1]
 	insertDataQuery += ";"
