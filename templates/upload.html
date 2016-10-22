@@ -107,15 +107,59 @@
 							<div class="tab-pane" id="tab3">
 								<div class="panel panel-default panel-success">
 						    		<div class="panel-heading">
-						    			<h3 class="panel-title"> Choose the relevant output columns</h3>
+						    			<h3 class="panel-title"> Choose a calculations file</h3>
 						    		</div>
-
+						    	
 						    		<div class="panel-body">
-						    			Choose what all to include in the output file
+<!-- 						    		    //read how many calculations files are already there and then display them in radio buttons. --> 						    			
+
+						    			<form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+						    				<h4> Select from the existing calculations files</h4>							    			
+							    			<div class="row">
+							    				<div class="col-lg-4">
+													<div class="radio">
+													  <label><input type="radio" name="optradio1">Option 1</label>
+													</div>
+													<div class="radio">
+													  <label><input type="radio" name="optradio2">Option 2</label>
+													</div>
+													<div class="radio disabled">
+													  <label><input type="radio" name="optradio3" disabled>Option 3</label>
+													</div>
+												</div>
+
+												<div class="col-lg-4">
+													<div class="radio">
+													  <label><input type="radio" name="optradio1">Option 1</label>
+													</div>
+													<div class="radio">
+													  <label><input type="radio" name="optradio2">Option 2</label>
+													</div>
+													<div class="radio disabled">
+													  <label><input type="radio" name="optradio3" disabled>Option 3</label>
+													</div>
+												</div>
+
+											</div>
+											<div class="row">
+							    				<div class="col-lg-12">
+													<h3> OR </h3>
+													<h4> Upload a new file</h4>
+													<div class="form-inline">
+              											<div class="form-group">
+              								     			<input class="form-control" type="file" name="files[]" id="js-upload-files">
+              											</div>
+              												<button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload file</button>
+            										</div>
+            									</div>
+            								</div>
+											
+										</form>
 						    		</div>
 						    	</div>
 
 						    </div>
+						    
 							<div class="tab-pane" id="tab4">
 								<div class="panel panel-default panel-success">
 						    		<div class="panel-heading">
