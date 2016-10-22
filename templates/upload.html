@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Upload Data Workflow</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content=" Upload Data using Twitter Bootstrap Wizard Plugin">
+		<meta name="author" content=" Sarthak Ghosh. Template by Vincent Gabriel">
+
+		<!-- Bootstrap and Jquery-->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery.bootstrap.wizard.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='generalJS/dragAndDrop.js') }}"></script>
+
+
+		<link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='generalCSS/specialStyles.css') }}" rel="stylesheet">
+
+		<script>
+				$(document).ready(function() {
+					$('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-tabs'});
+				});
+		</script>
+
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+		</style>
+		</head>
+		<body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  		<div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WCA Data Manager</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Add Data</a></li>
+            <li><a href="#archive">View Archive</a></li>
+            <li><a href="#dbStructure">Modify DB Structure</a></li>
+            <li><a href="#demo">Modify Geographic Calculations</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+  	</nav>
+  	<div class="container">
+	    <div class="row-fluid">
+	  		<div class="span1">
+	  		   <div >
+	              <h1>Add Data</h1>
+	              </br>
+	              <div id="rootwizard" class="tabbable tabs-left">
+
+								<ul>
+						  		<li><a href="#tab1" data-toggle="tab"><h4>Step 1</h4></a></li>
+									<li><a href="#tab2" data-toggle="tab"><h4>Step 2</h4></a></li>
+									<li><a href="#tab3" data-toggle="tab"><h4>Step 3</h4></a></li>
+									<li><a href="#tab4" data-toggle="tab"><h4>Step 4</h4></a></li>
+								</ul>
+
+
+                        <div >
+						<div class="tab-content">
+						    <div class="tab-pane" id="tab1">
+						    	<div class="panel panel-default panel-success">
+						    		<div class="panel-heading">
+						    			<h3 class="panel-title">Upload a CSV file</h3>
+						    		</div>
+						    		<div class="panel-body">
+						    			<form action="/upload" method="post" enctype="multipart/form-data" id="js-upload-form">
+            								<div class="form-inline">
+              									<div class="form-group">
+              								     <input class="form-control" type="file" name="file" id="js-upload-files">
+              									</div>
+              									<button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            								</div>
+          								</form>
+
+          								</br>
+          								<h4>Or drag and drop a file below</h4>
+         									 <div class="upload-drop-zone" id="drop-zone">
+            									Just drag and drop files here
+          									</div>
+          							</div>
+						    	</div><!--div panel-->
+
+						    </div><!--div tab pane tab 1-->
+
+						    <div class="tab-pane" id="tab2">
+						    	<div class="panel panel-default panel-success">
+						    		<div class="panel-heading">
+						    			<h3 class="panel-title">Enter some information about your data</h3>
+						    		</div>
+						    		<div class="panel-body">
+                                    	Enter type of data and the date range of the data
+						    	 	</div>
+						    	</div>
+
+						    </div>
+
+							<div class="tab-pane" id="tab3">
+								<div class="panel panel-default panel-success">
+						    		<div class="panel-heading">
+						    			<h3 class="panel-title"> Choose the relevant output columns</h3>
+						    		</div>
+
+						    		<div class="panel-body">
+						    			Choose what all to include in the output file
+						    		</div>
+						    	</div>
+
+						    </div>
+							<div class="tab-pane" id="tab4">
+								<div class="panel panel-default panel-success">
+						    		<div class="panel-heading">
+						    			<h3 class="panel-title">File successfully Processed</h3>
+						    		</div>
+
+						    		<div class="panel-body">
+						    			<h4> Press the button below to download the processed CSV file suitable for Tableau </h4>
+						    			<button class="btn btn-success">download file</button>
+
+						    		</div>
+						    	</div>
+
+						    </div><!--div tab 4-->
+
+							<ul class="pager wizard">
+								<li class="previous first" style="display:none;"><a href="javascript:;">First</a></li>
+								<li class="previous"><a href="javascript:;">Previous</a></li>
+								<li class="next last" style="display:none;"><a href="javascript:;">Last</a></li>
+							  	<li class="next" id="nextButton"><a href="javascript:;">Next</a></li>
+							</ul>
+						</div>
+					</div>
+					</div>
+	            </div>
+	        </div>
+
+          </div><!--/row-->
+  </body>
