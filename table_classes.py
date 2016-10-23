@@ -1,7 +1,7 @@
 class ID_Table:
     table_name = "GEO_ID"
-    data_types_all = "string"   #set to false if table contains different data types, and assign 
-                                #   var1, var2, ..., varn data types type1, type2, ..., typen 
+    data_types_all = "string"   #set to false if table contains different data types, and assign
+                                #   var1, var2, ..., varn data types type1, type2, ..., typen
     var1 = "Id"#"GEO.id"
     var2 = "Id2"#"GEO.id2"
     var3 = "Geography"#"GEO.display-label"
@@ -64,7 +64,7 @@ class Hispanic_Origin_Table:
     var1 = "Total population"
     var2 = "Not Hispanic or Latino"
     var3 = "Hispanic or Latino"
-    
+
 class Relationship_Children_Table:
     table_name = "Relationship to Householder for Children Under 18 years in households"
     Id = "Id"
@@ -76,11 +76,11 @@ class Relationship_Children_Table:
     var5 = "Estimated; Grandchild"
     var6 = "Estimate; Other relatives"
     var7 = "Estimate; Foster child or other unrelated child"
-    
+
 class Houshold_Relationship_Table:
     table_name = "Household Type (including living alone) by relationship"
     Id = "Id"
-    data_types_all = "int"    
+    data_types_all = "int"
     var1 = "Total Population"
     var2 = "In households"
     var3 = "In group quarters"
@@ -105,11 +105,11 @@ class Houshold_Relationship_Table:
     var22 = "In Households"
     var23 = "Male living alone"
     var24 = "Female living alone"
-    
+
 class Relationship_65_Table:
     table_name = "Relationship by Household Type (including living alone) for the population 65 years and over"
     Id = "Id"
-    data_types_all = "int"    
+    data_types_all = "int"
     var1 = "Total Population in 65 years and over"
     var2 = "In households"
     var3 = "In group quarters"
@@ -126,11 +126,11 @@ class Relationship_65_Table:
     var14 = "In Households"
     var15 = "Male living alone"
     var16 = "Female living alone"
-    
+
 class Sex_Marital_Status_Table:
     table_name = "Sex by Marital Status for the Population 15 years and over"
     Id = "Id"
-    data_types_all = "int"   
+    data_types_all = "int"
     var1 = "Total Population 15 years and over"
     var2 = "Never married"
     var3 = "Now married"
@@ -140,11 +140,11 @@ class Sex_Marital_Status_Table:
     var7 = "Now married"
     var8 = "Married, spouse present"
     var9 = "Married, spouse absent"
-    
+
 class Household_Language_Limited_Table:
     table_name = "Household Language by Household Limited English Speaking Status"
     Id = "Id"
-    data_types_all = "int"    
+    data_types_all = "int"
     var1 = "Total Households"
     var2 = "English only"
     var3 = "Spanish"
@@ -166,11 +166,11 @@ class Household_Language_Limited_Table:
     var19 = "Total Households"
     var20 = "Limited english speaking"
     var21 = "Not limited English speaking"
-    
+
 class Sex_Age_Veteran_Table:
     table_name = "Sex by Age by Veteran Status for the Civilian Population 18 years and over"
     Id = "Id"
-    data_types_all = "int"    
+    data_types_all = "int"
     var1 = "Total Civilian Population 18 Years and over"
     var2 = "Veteram"
     var3 = "Nonveteran"

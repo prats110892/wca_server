@@ -1,20 +1,50 @@
-from __future__ import print_function
-from os.path import join, dirname, abspath
-import xlrd
-import sys, getopt
 import MySQLdb
-import mappings
 
+class Dbhelper :
+	"A Class that handles all database operations"
 
-tableName = sys.argv[1]
-
-db = MySQLdb.connect(host="localhost",  # your host, usually localhost
+	db = NULL
+	def openConnection() :
+		db = MySQLdb.connect(host="localhost",  # your host, usually localhost
 							user="root",         # your username
 							passwd="aguamenti92",
 							db="wca_data_dashboard")
-cursor = db.cursor()
-cursor.execute("DROP TABLE RelationshipChildren;")
-cursor.execute("CREATE TABLE RelationshipChildren(ID VARCHAR(50), Total BIGINT, BiologicalChild BIGINT, AdoptedChild BIGINT, StepChild BIGINT, GrandChild BIGINT, OtherRelatives BIGINT, FosterOrUnrelatedChild BIGINT, FOREIGN KEY(ID) REFERENCES GeoID(Id));")
-cursor.execute(mappings.getQuery(tableName, "RelationshipChildren"))
-db.commit()
-db.close()
+
+	def executeQuery(query) :
+		openConnection()
+		cursor = db.cursor()
+		result = cursor.execute(query)
+		db.commit()
+		closeDb()
+		return result
+
+	def closeDb() :
+		db.close()
+
+
+	def createTable(tableName, columns, columnDataTypes, tableMetaData) :
+			createTableQuery = "CREATE TABLE " + tableName + "("
+			for i in range(0, len(columns)) :
+				if len(columnDataTypes > 2 or i is 0) :
+					createTableQuery += columns[i] + " " + columnDataTypes[i] + " ,"
+				else :
+					createTableQuery += columns[i] + " " + columnDataTypes[1] + " ,"
+
+			if table_extra_meta_data is not "" :
+				createTableQuery += " " + tableMetaData
+			else :
+				createTableQuery = createTableQuery[:-1]
+
+			createTableQuery += ");"
+			return executeQuery(createTableQuery)
+
+	def deleteTable(tableName) :
+		deleteTableQuery = "DROP TABLE " + tableName + ";"
+		return executeQuery(deleteTableQuery)
+
+	def checkIfTableExists(tableName) :
+		query = """SELECT COUNT(*) FROM information_schema.tables WHERE table_name = '{0}' """.format(tablename.replace('\'', '\'\''))
+		result = executeQuery(query)
+		if result.fetchone()[0] == 1:
+			return True
+    	return False
