@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + "/uploads"
-ALLOWED_EXTENSIONS = set(['csv', 'xls', 'xlsx'])
+ALLOWED_EXTENSIONS = set(['csv'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 

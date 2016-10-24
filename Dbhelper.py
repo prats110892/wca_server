@@ -25,10 +25,10 @@ class Dbhelper :
 	def createTable(tableName, columns, columnDataTypes, tableMetaData) :
 			createTableQuery = "CREATE TABLE " + tableName + "("
 			for i in range(0, len(columns)) :
-				if len(columnDataTypes > 2 or i is 0) :
+				if len(columnDataTypes) == len(columns) or i < len(columnDataTypes) :
 					createTableQuery += columns[i] + " " + columnDataTypes[i] + " ,"
 				else :
-					createTableQuery += columns[i] + " " + columnDataTypes[1] + " ,"
+					createTableQuery += columns[i] + " " + columnDataTypes[(len(columnDataTypes) - 1)] + " ,"
 
 			if table_extra_meta_data is not "" :
 				createTableQuery += " " + tableMetaData

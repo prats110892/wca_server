@@ -3,11 +3,10 @@ import csv
 
 class Base_Table(object):
 	"This is the base table class that all other table classes will extend"
-		columns = ["Id", "From Year", "To Year"] # Just a default definition. You still have to add to all the others
 
-		column_data_types = ["VARCHAR(50) NOT NULL", "INT"] # If all the columns other than id are the same datatype then just 2 entries needed
-		table_extra_meta_data = "FOREIGN KEY(" + columns[0] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + ")"
-		num_of_rows_to_leave = 2
+		columns = ["From Year", "To Year", "Id"] # Just a default definition. You still have to add to all the others
+		column_data_types = ["INT", "INT", "VARCHAR(50) NOT NULL", "INT"] # If all the columns other than id are the same datatype then just 2 entries needed
+		table_extra_meta_data = "FOREIGN KEY(" + columns[2] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + ")"
 
 		Dbhelper = NULL
 
@@ -22,8 +21,11 @@ class Base_Table(object):
 		def deleteTable(self) :
 			return Dbhelper.deleteTable(table_name)
 
-		def insertDataFromCSVFile(self, csvFileName) :
+		def insertDataFromCSVFile(self, csvFileName, fromYear, toYear) :
 			csvFile = open(csvFileName)
 			csvReader = csv.reader(csvFile)
-			insertDataQuery = getInsertQueryForCSV(csvReader)
+			insertDataQuery = getInsertQueryForCSV(csvReader, fromYear, toYear)
 			return Dbhelper.executeQuery(insertDataQuery)
+
+		def getIDAndYearQueryForRow(row, fromYear, toYear) :
+			return "%d, %d, '%s'," %(fromYear, toYear, row[0])
