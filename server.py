@@ -20,7 +20,11 @@ def root_path() :
 
 @app.route("/upload_file")
 def upload_a_new_file() :
-	return render_template("upload.html")
+	return render_template("upload_scrolling.html")
+
+@app.route("/download")
+def download_data() :
+	return render_template("download.html")
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_file() :
