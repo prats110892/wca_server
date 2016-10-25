@@ -10,7 +10,7 @@ class ID_Table(object):
 	table_extra_meta_data = "PRIMARY KEY(" + columns[0] + ")"
 	num_of_rows_to_leave = 2
 
-	Dbhelper = NULL
+	Dbhelper = None
 
 	def __init__ () :
 		Dbhelper = Dbhelper()

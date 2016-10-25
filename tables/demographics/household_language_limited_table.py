@@ -1,46 +1,46 @@
 from tables.base_table_class import Base_Table
-import csv
 
 class HOUSEHOLD_LANGUAGE_LIMITED_Table(Base_Table):
 	"The definition of the Household Language Limited Table in the database"
 
-	num_of_rows_to_leave = 2
 	table_name = "HOUSEHOLD_LANGUAGE_LIMITED"
-	columns = 	Base_Table.columns +
-				["Total Households",
-				"English only",
-				"Spanish",
-	 			"Indo-European languages",
-				"Asian and Pacific Island languages",
-				"Other Languages",
-				"Spanish",
-				"Spanish: Limited English speaking household",
-				"Spanish: Not a limited English speaking household",
-				"Indo-European languages",
-				"Indo-European: Limited English speaking household",
-				"Indo-European: Not a limited English speaking household",
-				"Asian and Pacific Island languages",
-				"Asian and Pacific: Limited English speaking household",
-				"Asian and Pacific: Not a limited English speaking household",
-				"Other languages",
-				"Other: Limited English speaking household",
-				"Other: Not a limited English speaking household",
-				"Total Households",
-				"Limited english speaking",
-				"Not limited English speaking"]
 
 	def __init__(self) :
-		Base_Table.__init__()
+		self.table_name = HOUSEHOLD_LANGUAGE_LIMITED_Table.table_name
+		self.columns = Base_Table.columns + ["Total Households",
+					"English only",
+					"Spanish",
+		 			"Indo-European languages",
+					"Asian and Pacific Island languages",
+					"Other Languages",
+					"Spanish Category",
+					"Spanish: Limited English speaking household",
+					"Spanish: Not a limited English speaking household",
+					"Indo-European languages Category",
+					"Indo-European: Limited English speaking household",
+					"Indo-European: Not a limited English speaking household",
+					"Asian and Pacific Island languages Category",
+					"Asian and Pacific: Limited English speaking household",
+					"Asian and Pacific: Not a limited English speaking household",
+					"Other languages Category",
+					"Other: Limited English speaking household",
+					"Other: Not a limited English speaking household",
+					"Total Households English vs Not Limited English",
+					"Limited english speaking",
+					"Not limited English speaking"]
 
-	def getInsertQueryForCSV(self, csvReader, fromYear, toYear) :
+		self.initalize()
+
+	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
 		skipCount = 0
-		insertDataQuery = "INSERT INTO " + table_name + " VALUES "
-		for row in csvReader:
-			if (skipCount < num_of_rows_to_leave) :
+		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
+		for line in csvFile:
+			row = line.split(",")
+			if (skipCount < Base_Table.num_of_rows_to_leave) :
 				skipCount += 1
 				continue
 
-			defaultQuery = Base_Table().getIDAndYearQueryForRow(row, fromYear, toYear)
+			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
 			dataQuery = "%d, %d, %d, %d, %d, %d, %d, %d, %d, %d,\
 	                     %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d" %(int(row[3]), #B
 						 int(row[4]), #C

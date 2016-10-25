@@ -1,35 +1,34 @@
 from tables.base_table_class import Base_Table
-import csv
 
 class HOUSEHOLD_RELATIONSHIP_Table(Base_Table):
 	"The definition of the Household Relationship Table in the database"
-
-	num_of_rows_to_leave = 2
 	table_name = "HOUSEHOLD_RELATIONSHIP"
-	columns = 	Base_Table.columns + ["Total Population",
-				"In households", "In group quarters",
-	 			"Estimate: Own child - Adopted child", "Householder",
-				"Male householder (in family and nonfamily households)",
-				"Female householder (in family and nonfamily households)",
-				"In Households", "Householder", "Spouse", "Child", "Grandchild",
-				"Brother or sister", "Parent", "Parent-in-law",
-				"Son-in-law or daughter-in-law", "Other relatives",
-				"Roomer or boarder", "Housemate or roommate",
-				"Unmarried partner", "Foster child", "Other nonrelatives",
-				"In Households", "Male living alone", "Female living alone"]
 
 	def __init__(self) :
-		Base_Table.__init__()
+		self.table_name = HOUSEHOLD_RELATIONSHIP_Table.table_name
+		self.columns = Base_Table.columns + ["Total Population",
+					"In households", "In group quarters",
+		 			"Householder",
+					"Male householder (in family and nonfamily households)",
+					"Female householder (in family and nonfamily households)",
+					"In Households For Details", "Householder For Details", "Spouse", "Child", "Grandchild",
+					"Brother or sister", "Parent", "Parent-in-law",
+					"Son-in-law or daughter-in-law", "Other relatives",
+					"Roomer or boarder", "Housemate or roommate",
+					"Unmarried partner", "Foster child", "Other nonrelatives",
+					"In Households For Male vs Females", "Male living alone", "Female living alone"]
+		self.initalize()
 
-	def getInsertQueryForCSV(self, csvReader, fromYear, toYear) :
+	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
 		skipCount = 0
-		insertDataQuery = "INSERT INTO " + table_name + " VALUES "
-		for row in csvReader:
-			if (skipCount < num_of_rows_to_leave) :
+		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
+		for line in csvFile:
+			row = line.split(",")
+			if (skipCount < Base_Table.num_of_rows_to_leave) :
 				skipCount += 1
 				continue
 
-			defaultQuery = Base_Table().getIDAndYearQueryForRow(row, fromYear, toYear)
+			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
 			dataQuery = "%d, %d, %d, %d, %d, %d, %d, %d, %d, %d,\
 	                     %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d,\
 	                     %d, %d" %(int(row[3]), #B
