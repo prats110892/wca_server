@@ -10,7 +10,7 @@ class HISPANIC_ORIGIN_Table(Base_Table):
 		self.columns = Base_Table.columns + ["Total Population",
 					"Not Hispanic or Latino",
 		 			"Hispanic or Latino"]
-
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

@@ -17,6 +17,12 @@ class MEDIAN_AGE_SEX_Table(Base_Table):
 					"85 years and over", "Total For Larger Age Brackets", "Under 5", "5 to 17",
 					"18 to 24 years", "25 to 39 years", "40 to 64 years",
 					"65 years and over", "75 years and over", "85 years and over (Larger)"]
+
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
+									", FOREIGN KEY(" + self.columns[24 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 0] + ")" +
+									", FOREIGN KEY(" + self.columns[25 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")" +
+									", FOREIGN KEY(" + self.columns[32 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 23] + ")"
+
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

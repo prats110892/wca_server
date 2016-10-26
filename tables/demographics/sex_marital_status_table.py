@@ -14,6 +14,9 @@ class SEX_MARITAL_STATUS_Table(Base_Table):
 					"Now married For Spouse Presence",
 					"Married, spouse present",
 					"Married, spouse absent"]
+
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
+									", FOREIGN KEY(" + self.columns[6 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 2] + ")"
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

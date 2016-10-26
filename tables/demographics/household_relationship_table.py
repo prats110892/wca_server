@@ -17,6 +17,11 @@ class HOUSEHOLD_RELATIONSHIP_Table(Base_Table):
 					"Roomer or boarder", "Housemate or roommate",
 					"Unmarried partner", "Foster child", "Other nonrelatives",
 					"In Households For Male vs Females", "Male living alone", "Female living alone"]
+
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
+									", FOREIGN KEY(" + self.columns[6 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")" +
+									", FOREIGN KEY(" + self.columns[7 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 3] + ")" +
+									", FOREIGN KEY(" + self.columns[21 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")"
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

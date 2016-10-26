@@ -12,6 +12,8 @@ class RACE_Table(Base_Table):
 					"Native Hawaiian and Other Pacific Islander alone",
 					"Some other race alone",
 					"Two or more races"]
+
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

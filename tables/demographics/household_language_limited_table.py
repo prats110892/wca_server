@@ -29,6 +29,11 @@ class HOUSEHOLD_LANGUAGE_LIMITED_Table(Base_Table):
 					"Limited english speaking",
 					"Not limited English speaking"]
 
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
+									", FOREIGN KEY(" + self.columns[6 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 2] + ")" +
+									", FOREIGN KEY(" + self.columns[9 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 3] + ")" +
+									", FOREIGN KEY(" + self.columns[12 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 4] + ")" +
+									", FOREIGN KEY(" + self.columns[15 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 5] + ")"
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

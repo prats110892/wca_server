@@ -14,6 +14,8 @@ class RELATIONSHIP_CHILDREN_Table(Base_Table):
 					"Estimate: Grandchild",
 					"Estimate: Other relatives",
 					"Estimate: Foster child or Other Unrelated child"]
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
+
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

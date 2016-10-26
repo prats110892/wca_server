@@ -9,6 +9,8 @@ class SEX_AGE_VETERAN_Table(Base_Table):
 		self.table_name = SEX_AGE_VETERAN_Table.table_name
 		self.columns = Base_Table.columns + ["Total Civilian Population 18 Years and over",
 					"Veteran", "Nonveteran"]
+
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :

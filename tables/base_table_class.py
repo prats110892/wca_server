@@ -15,7 +15,7 @@ class Base_Table(object):
 			self.createTable()
 
 	def createTable(self) :
-		return self.dbHelper.createTable(self.table_name, self.columns, Base_Table.column_data_types, Base_Table.table_extra_meta_data)
+		return self.dbHelper.createTable(self.table_name, self.columns, Base_Table.column_data_types, self.table_extra_meta_data)
 
 	def deleteTable(self) :
 		return self.dbHelper.deleteTable(self.table_name)
