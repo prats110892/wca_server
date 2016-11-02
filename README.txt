@@ -41,4 +41,12 @@
 		Will output the .py table definition.
 		The formatting is a slightly off from what we have, but I think it ought to work normally. 
 		 	-you still have to manually change the __init__.py file for now
+			
+			
+TODO:
+-figure something out for the __init__.py file updating 
+-do some null checking, so you don't accidentally add blank mappings or something
+-possibly add an undo button to remove the last mapping you've added
+-make sure it actually works
+
 
