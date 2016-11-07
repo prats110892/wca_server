@@ -7,6 +7,6 @@ class NPU_CALC_Table(Base_Calc_Table):
 	def __init__(self) :
 		self.table_name = NPU_CALC_Table.table_name
 		self.columns = Base_Calc_Table.columns + ["A", "B", "C", "D", "E", "F", "G", "H", "I",
-					"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+					"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "V",
 		 			"W", "X", "Y", "Z"]
 		self.initalize()

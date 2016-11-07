@@ -9,6 +9,6 @@ class TAD_CALC_Table(Base_Calc_Table):
 		self.table_name = TAD_CALC_Table.table_name
 		self.columns = Base_Calc_Table.columns + ["Atlantic Station", "Beltline", "Cambellton",
 										"Eastside", "Hollowell MLK", "Metropolitan Pkwy",
-										"Perry Bolton", "Princeton Lakes", "Stadium  ",
+										"Perry Bolton", "Princeton Lakes", "Stadium",
 										"Westside"]
 		self.initalize()

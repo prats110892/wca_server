@@ -12,7 +12,7 @@ class NEIGHBOURHOOD_CALC_Table(Base_Calc_Table):
 										"ArlingtonEstates", "AshleyCourts", "AshviewHeights",
 										"AtkinsPark", "AtlantaIndustrialPark", "AtlantaUniversityCenter",
 										"AtlanticStation", "AudobonForest", "AudobonForestWest", "BakerHills",
-										"BakersFerry", "Bankhead", "Bankhead", "BankheadCourts", "BeecherHills",
+										"BakersFerry", "Bankhead1", "Bankhead2", "BankheadCourts", "BeecherHills",
 										"BenHill", "BenHillAcres", "BenHillForest", "BenHillPines", "BenHillTerrace",
 										"BenteenPark", "BerkleyPark", "BetmarLavilla", "BlairVilla", "Blandtown",
 										"Bolton", "BoltonHills", "BoulderPark", "BoulevardHeights", "Brandon",
@@ -52,7 +52,7 @@ class NEIGHBOURHOOD_CALC_Table(Base_Calc_Table):
 										"VenetianHills", "VillageCarver", "VillagesCastleberryHill", "VillagesEastLake", "VineCity",
 										"VirginiaHighland", "WashingtonPark", "WesleyBattle", "WestEnd", "Westhaven", "WestHighland",
 										"WestLake", "WestManor", "Westminster", "WestoverPlantation", "WestPacesFerrry", "Westview",
-										"WestwoodTerrace", "WhitewaterCreek", "WhittierMillVillage", "Wildwood", "Wildwood",
+										"WestwoodTerrace", "WhitewaterCreek", "WhittierMillVillage", "Wildwood1", "Wildwood2",
 										"WildwoodForest", "WilsonMillMeadows", "WisteriaGardens", "Woodfield", "WoodlandHills", "Wyngate"]
 
 		self.initalize()

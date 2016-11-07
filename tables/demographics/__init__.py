@@ -35,9 +35,6 @@ def getTableName(client_table_name) :
 
 
 def parseAndInsertDemographicData(csvFile, tableName, fromDate, toDate) :
-	print(tableName)
 	stored_table_name = getTableName(tableName)
-	print(stored_table_name)
 	tableObject = TABLE_NAME_TO_OBJECT_MAPPING[stored_table_name]
-	print(tableObject.table_name)
 	return tableObject.insertDataFromCSVFile(csvFile, fromDate, toDate)

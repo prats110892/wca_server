@@ -7,14 +7,30 @@ from npu_calc_table import NPU_CALC_Table
 from tad_calc_table import TAD_CALC_Table
 from zip_calc_table import ZIP_CALC_Table
 
-def parseAndInsertCalculationsData(csvFile, tableName, fromDate, toDate) :
+TABLE_NAME_TO_OBJECT_MAPPING = {
+		 APS_CALC_Table.table_name : APS_CALC_Table(),
+		 BELTLINE_CALC_Table.table_name : BELTLINE_CALC_Table(),
+		 CD_CALC_Table.table_name : CD_CALC_Table(),
+		 CHOICE_PERCENT_CALC_Table.table_name : CHOICE_PERCENT_CALC_Table(),
+		 NEIGHBOURHOOD_CALC_Table.table_name : NEIGHBOURHOOD_CALC_Table(),
+		 NPU_CALC_Table.table_name : NPU_CALC_Table(),
+		 TAD_CALC_Table.table_name : TAD_CALC_Table(),
+		 ZIP_CALC_Table.table_name : ZIP_CALC_Table(),
+}
+
+def getTableName(client_table_name) :
 	return {
-             APS_CALC_Table.table_name : APS_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             BELTLINE_CALC_Table.table_name : BELTLINE_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             CD_CALC_Table.table_name : CD_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             CHOICE_PERCENT_CALC_Table.table_name : CHOICE_PERCENT_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             NEIGHBOURHOOD_CALC_Table.table_name : NEIGHBOURHOOD_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             NPU_CALC_Table.table_name : NPU_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             TAD_CALC_Table.table_name : TAD_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate),
-             ZIP_CALC_Table.table_name : ZIP_CALC_Table().insertDataFromCSVFile(csvFileName=csvFile, fromYear=fromDate, toYear=toDate)
-	}[tableName]
+			'APS' : APS_CALC_Table.table_name,
+			'beltline' : BELTLINE_CALC_Table.table_name,
+			'CD' : CD_CALC_Table.table_name,
+			'choicePercent' : CHOICE_PERCENT_CALC_Table.table_name,
+			'neighborhood' : NEIGHBOURHOOD_CALC_Table.table_name,
+			'NPU' : NPU_CALC_Table.table_name,
+			'TAD' : TAD_CALC_Table.table_name,
+			'ZIP' : ZIP_CALC_Table.table_name,
+	}[client_table_name]
+
+def parseAndInsertCalculationsData(csvFile, tableName, fromDate) :
+	stored_table_name = getTableName(tableName)
+	tableObject = TABLE_NAME_TO_OBJECT_MAPPING[stored_table_name]
+	return tableObject.insertDataFromCSVFile(csvFile, fromDate)

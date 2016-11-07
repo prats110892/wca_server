@@ -7,7 +7,7 @@ class APS_CALC_Table(Base_Calc_Table):
 
 	def __init__(self) :
 		self.table_name = APS_CALC_Table.table_name
-		self.columns = Base_Calc_Table.columns + ["Carver ", "Douglass", "Grady", "Jackson",
+		self.columns = Base_Calc_Table.columns + ["Carver", "Douglass", "Grady", "Jackson",
 										"Mays", "North Atlanta", "South Atlanta",
 										"Therrell", "Washington"]
 		self.initalize()

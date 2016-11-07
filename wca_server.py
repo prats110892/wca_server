@@ -29,19 +29,14 @@ def root_path() :
 
 @app.route("/upload")
 def upload_a_new_file() :
-	return render_template("upload_scrolling.html")
+	return upload_data_file()
 
 @app.route("/download")
 def download_data() :
 	return render_template("download.html")
 
-
-@app.route("/geographic_calculation")
-def download_data() :
-	return render_template("geographic_calculation.html")
-
 @app.route("/upload_data", methods=["GET", "POST"])
-def upload_file() :
+def upload_data_file() :
 	if request.method == "POST" :
 		file = request.files['data-file']
 		if 'data-file' not in request.files or file.filename == '':
@@ -53,17 +48,35 @@ def upload_file() :
 		if request.form.get("from-date") is "" :
 			return "From Date is missing"
 		if request.form.get("to-date") is "":
-			if request.form.get("category").lower() != DataCategories.CALCULATIONS.lower() :
-				return "To Date is missing"
+			return "To Date is missing"
 
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			upload_file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			file.save(upload_file_path)
-			insertIntoDatabase(upload_file_path, request)
+			insertDataIntoDatabase(upload_file_path, request)
 			return "File " + filename + " Successfully Uploaded"
-		return uploadFileAndInsertIntoDatabase(request)
-	return "Invalid argument. Can't come to this page directly"
+	return render_template("upload_scrolling.html")
+
+@app.route('/upload_calc', methods=["GET", "POST"])
+def upload_calc_file() :
+	if request.method == "POST" :
+		file = request.files['calc-file']
+		if 'calc-file' not in request.files or file.filename == '':
+			return "File is missing"
+		if request.form.get("table-name") is "" :
+			return "Category is missing"
+		if request.form.get("from-date") is "" :
+			return "From Date is missing"
+
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			upload_file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+			file.save(upload_file_path)
+			insertCalculationsIntoDatabase(upload_file_path, request)
+			return "File " + filename + " Successfully Uploaded"
+	return render_template("geographic_calculation.html")
+
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -82,18 +95,21 @@ class GetCSVFile(Resource) :
 
 api.add_resource(GetCSVFile, "/getcsvfile")
 
-def insertIntoDatabase(uploadFilePath, request) :
+def insertCalculationsIntoDatabase(uploadFilePath, request) :
+	tableName = request.form.get("table-name")
+	fromDate = request.form.get("from-date")
+	csvFileName = uploadFilePath
+	print(tableName + " " + fromDate + " " + csvFileName)
+	parseAndInsertCalculations(csvFileName, tableName, fromDate)
+
+def insertDataIntoDatabase(uploadFilePath, request) :
 	category = request.form.get("category").lower()
 	tableName = request.form.get("table-name")
 	fromDate = request.form.get("from-date")
 	toDate = request.form.get("to-date")
 	csvFileName = uploadFilePath
-	if category.lower() == DataCategories.CALCULATIONS.lower() :
-		print(category + " " + tableName + " " + fromDate + " " + csvFileName)
-		parseAndInsertCalculations(csvFileName, tableName, fromDate)
-	else :
-		print(category + " " + tableName + " " + fromDate + " "  + toDate + " " + csvFileName)
-		parseAndInsertData(category, csvFileName, tableName, fromDate, toDate)
+	print(category + " " + tableName + " " + fromDate + " "  + toDate + " " + csvFileName)
+	parseAndInsertData(category, csvFileName, tableName, fromDate, toDate)
 
 if __name__ == "__main__":
 	app.run(debug=True)
