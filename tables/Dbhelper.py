@@ -38,6 +38,7 @@ class Dbhelper :
 				createTableQuery = createTableQuery[:-1]
 
 			createTableQuery += ");"
+			print(createTableQuery)
 			return self.executeQuery(createTableQuery)
 
 	def deleteTable(self, tableName) :

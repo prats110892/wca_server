@@ -1,8 +1,8 @@
-import tkinter 
+import tkinter
 
 		# run 'python -m tkinter' on the command line to see if tkinter is set up properly
 		# 	 - this should bring up a little frame with a click me button on it
-		#    - if it doesn't run, you may need to install the TK software manually. 
+		#    - if it doesn't run, you may need to install the TK software manually.
 		#		- i had to install it on my computer, but im not sure about windows/mac
 		#		- I believe you can get the activetcl distro from activestate.com which should work
 import xlrd
@@ -11,7 +11,7 @@ from writeClassFile import writeFile
 from tkinter import filedialog
 from functools import partial
 
-""" 
+"""
 	This tool provides a GUI to create python class files
 
 	see the README for usage instructions
@@ -27,11 +27,11 @@ top.maxsize(300,200);
 
 filename = ''
 
-#runs when you click the 'open file...' button. Used to get the filename. 
-#also does some parsing by removing the absolute filepath and the .xlsx part. 
+#runs when you click the 'open file...' button. Used to get the filename.
+#also does some parsing by removing the absolute filepath and the .xlsx part.
 	#this parsed value is set as the default for the tableName entry field
 def openFileCallback() :
-    	
+
 	global filename
 	filename = filedialog.askopenfilename() # show an "Open" dialog box and return the path to the selected file
 	print(filename)
@@ -91,7 +91,7 @@ nextButton.pack(side = 'bottom') #align to the bottom of the window
 
 
 #These frames are kind of weird because they use scrollbars
-	#basically you have to put a Frame (used to hold the widgets) inside of a Canvas, 
+	#basically you have to put a Frame (used to hold the widgets) inside of a Canvas,
 	# attach the Canvas to a Scrollbar,
 	# then put both inside of another Frame (to hold the Canvas/Scrollbar)
 #its just mostly some boilerplate functionality to allow scrolling
@@ -126,9 +126,9 @@ def colsCallback(index) :
 
 buttonsList = []
 
-#this creates the actual buttons. Parses the XLSX and then creates Button objects in a loop. 
+#this creates the actual buttons. Parses the XLSX and then creates Button objects in a loop.
 
-#I added the row number/letter so you don't have to count down to the 15th row 
+#I added the row number/letter so you don't have to count down to the 15th row
 # when working from the mappings doc
 
 def createButtons() :
@@ -252,7 +252,7 @@ def finishCallback() :
 	dataQueryStr = dataQueryStr + " %(\n"
 	for label in labelList :
 		dataQueryStr = dataQueryStr + "\t\t\t\tint(" + label.cget("text") + "),\n"
-	
+
 	dataQueryStr = dataQueryStr[:-2]
 	dataQueryStr = dataQueryStr + ")"
 

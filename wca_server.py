@@ -4,11 +4,14 @@ CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(CURRENT_DIRECTORY)
 
 from flask import Flask, request, redirect, url_for, send_from_directory, render_template
+from flask_restful import Resource, Api
 from werkzeug.utils import secure_filename
-from tables import parseAndInsertData, updateIdTableWithNewCSVFile
+from tables import parseAndInsertData, updateIdTableWithNewCSVFile, parseAndInsertCalculations
+from tables.categories import DataCategories
 
 
 app = Flask(__name__)
+api = Api(app)
 
 
 UPLOAD_FOLDER = CURRENT_DIRECTORY + "/uploads"
@@ -49,8 +52,9 @@ def upload_file() :
 			return "Category is missing"
 		if request.form.get("from-date") is "" :
 			return "From Date is missing"
-		if request.form.get("to-date") is "" :
-			return "To Date is missing"
+		if request.form.get("to-date") is "":
+			if request.form.get("category").lower() != DataCategories.CALCULATIONS.lower() :
+				return "To Date is missing"
 
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
@@ -66,11 +70,30 @@ def uploaded_file(filename):
 	return send_from_directory(app.config['UPLOAD_FOLDER'],
 								filename)
 
+
+class GetCSVFile(Resource) :
+	def get(self) :
+		return {
+			"name" : "some_name_here",
+			"fromYear" : 1993,
+			"toYear" : 1997,
+			"downloadLink" : "http://hello.fuckoff.com"
+			}
+
+api.add_resource(GetCSVFile, "/getcsvfile")
+
 def insertIntoDatabase(uploadFilePath, request) :
 	category = request.form.get("category").lower()
 	tableName = request.form.get("table-name")
 	fromDate = request.form.get("from-date")
 	toDate = request.form.get("to-date")
 	csvFileName = uploadFilePath
-	print(category + " " + tableName + " " + fromDate + " "  + toDate + " " + csvFileName)
-	parseAndInsertData(category, csvFileName, tableName, fromDate, toDate)
+	if category.lower() == DataCategories.CALCULATIONS.lower() :
+		print(category + " " + tableName + " " + fromDate + " " + csvFileName)
+		parseAndInsertCalculations(csvFileName, tableName, fromDate)
+	else :
+		print(category + " " + tableName + " " + fromDate + " "  + toDate + " " + csvFileName)
+		parseAndInsertData(category, csvFileName, tableName, fromDate, toDate)
+
+if __name__ == "__main__":
+	app.run(debug=True)

@@ -119,7 +119,7 @@ def getTableName(client_table_name) :
 			'Sex_Marital_Status' : SEX_MARITAL_STATUS_Table.table_name,
 			'Household_Language_Limited' : HOUSEHOLD_LANGUAGE_LIMITED_Table.table_name,
 			'Sex_Age_Veteran': SEX_AGE_VETERAN_Table.table_name
-   
+
         		 'Age_Costs_Percent_Income' : AGE_COSTS_PERCENT_INCOME_Table.table_name,
         		 'Age_Gross_Rent_Percent_Income' : AGE_GROSS_RENT_PERCENT_INCOME_Table.table_name,
         		 'Age_Meals_Rent' : AGE_MEALS_RENT_Table.table_name,

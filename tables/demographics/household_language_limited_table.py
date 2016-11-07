@@ -29,11 +29,7 @@ class HOUSEHOLD_LANGUAGE_LIMITED_Table(Base_Table):
 					"Limited english speaking",
 					"Not limited English speaking"]
 
-		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
-									", FOREIGN KEY(" + self.columns[6 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 2] + ")" +
-									", FOREIGN KEY(" + self.columns[9 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 3] + ")" +
-									", FOREIGN KEY(" + self.columns[12 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 4] + ")" +
-									", FOREIGN KEY(" + self.columns[15 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 5] + ")"
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
@@ -66,8 +62,8 @@ class HOUSEHOLD_LANGUAGE_LIMITED_Table(Base_Table):
 						 int(row[15]), #R
 						 int(row[16]), #S
 						 int(row[3]), #T
-						 int(row[6]+row[9]+row[12]+row[15]), #U
-						 int(row[7]+row[10]+row[13]+row[16]))
+						 int(row[6])+int(row[9])+int(row[12])+int(row[15]), #U
+						 int(row[7])+int(row[10])+int(row[13])+int(row[16]))
 			insertDataQuery += "(" + defaultQuery + dataQuery + "),"
 
 		insertDataQuery = insertDataQuery[:-1]

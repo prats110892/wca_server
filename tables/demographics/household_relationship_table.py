@@ -18,10 +18,7 @@ class HOUSEHOLD_RELATIONSHIP_Table(Base_Table):
 					"Unmarried partner", "Foster child", "Other nonrelatives",
 					"In Households For Male vs Females", "Male living alone", "Female living alone"]
 
-		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
-									", FOREIGN KEY(" + self.columns[6 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")" +
-									", FOREIGN KEY(" + self.columns[7 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 3] + ")" +
-									", FOREIGN KEY(" + self.columns[21 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")"
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
@@ -39,11 +36,11 @@ class HOUSEHOLD_RELATIONSHIP_Table(Base_Table):
 	                     %d, %d" %(int(row[3]), #B
 								   int(row[4]), #C
 								   int(row[40]), #D
-								   int(row[6]+row[27]), #E
-								   int(row[7]+row[28]), #F
-								   int(row[8]+row[29]), #G
+								   int(row[6])+int(row[27]), #E
+								   int(row[7])+int(row[28]), #F
+								   int(row[8])+int(row[29]), #G
 								   int(row[4]), #H
-								   int(row[6]+row[27]), #I
+								   int(row[6])+int(row[27]), #I
 								   int(row[9]), #J
 								   int(row[10]), #K
 								   int(row[14]), #L
@@ -52,11 +49,11 @@ class HOUSEHOLD_RELATIONSHIP_Table(Base_Table):
 								   int(row[17]), #O
 								   int(row[18]), #P
 								   int(row[19]), #Q
-								   int(row[21]+row[35]), #R
-								   int(row[22]+row[36]), #S
-								   int(row[23]+row[37]), #T
-								   int(row[24]+row[38]), #U
-								   int(row[25]+row[39]), #V
+								   int(row[21])+int(row[35]), #R
+								   int(row[22])+int(row[36]), #S
+								   int(row[23])+int(row[37]), #T
+								   int(row[24])+int(row[38]), #U
+								   int(row[25])+int(row[39]), #V
 								   int(row[4]), #W
 								   int(row[29]), #X
 								   int(row[32]))

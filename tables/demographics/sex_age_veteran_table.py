@@ -23,7 +23,7 @@ class SEX_AGE_VETERAN_Table(Base_Table):
 				continue
 
 			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
-			dataQuery = "%d, %d, %d, %d" %(int(row[3]), #B
+			dataQuery = "%d, %d, %d" %(int(row[3]), #B
 											int(row[4]), #C
 											int(row[5])) #D
 			insertDataQuery += "(" + defaultQuery + dataQuery + "),"

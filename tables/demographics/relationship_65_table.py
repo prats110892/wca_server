@@ -14,11 +14,7 @@ class RELATIONSHIP_65_Table(Base_Table):
 					"In Households For Details", "Householder For Details", "Spouse", "Parent",
 					"Parent-in-law", "Other relatives", "Other nonrelatives",
 					"In Households For Male vs Female", "Male living alone", "Female living alone"]
-		self.table_extra_meta_data = Base_Table.table_extra_meta_data +
-									", FOREIGN KEY(" + self.columns[6 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")" +
-									", FOREIGN KEY(" + self.columns[7 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 3] + ")" +
-									", FOREIGN KEY(" + self.columns[13 + len(Base_Table.columns)] + ") REFERENCES " + self.table_name + "(" + self.columns[len(Base_Table.columns) + 1] + ")"
-
+		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
@@ -35,16 +31,16 @@ class RELATIONSHIP_65_Table(Base_Table):
 	                  %d, %d, %d, %d, %d, %d" %(int(row[3]), #B
 					  int(row[4]), #C
 					  int(row[23]), #D
-					  int(row[7]+row[16]+row[8]+row[19]), #E
-					  int(row[7]+row[16]), #F
-					  int(row[8]+row[19]), #G
+					  int(row[7])+int(row[16])+int(row[8])+int(row[19]), #E
+					  int(row[7])+int(row[16]), #F
+					  int(row[8])+int(row[19]), #G
 					  int(row[4]), #H
-					  int(row[7]+row[16]+row[8]+row[19]), #I
+					  int(row[7])+int(row[16])+int(row[8])+int(row[19]), #I
 					  int(row[9]), #J
 					  int(row[10]), #K
 					  int(row[11]), #L
 					  int(row[12]), #M
-					  int(row[4]-row[7]-row[16]-row[8]-row[19]-row[9]-row[10]-row[11]-row[12]), #N
+					  int(row[4])-int(row[7])-int(row[16])-int(row[8])-int(row[19])-int(row[9])-int(row[10])-int(row[11])-int(row[12]), #N
 					  int(row[4]), #O
 					  int(row[17]), #P
 					  int(row[19])) #Q

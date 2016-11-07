@@ -15,6 +15,6 @@ def parseAndInsertData(category, csv_file, table_name, from_Date, to_Date) :
 		print("Inside Demographics")
 		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
 
-	if category.lower() == DataCategories.CALCULATIONS.lower() :
-		print("Inside calculations")
-		parseAndInsertCalculationsData(csv_file, table_name, from_Date, to_Date)
+def parseAndInsertCalculations(csv_file, table_name, from_Date) :
+	print("Inside calculations")
+	parseAndInsertCalculationsData(csv_file, table_name, from_Date)

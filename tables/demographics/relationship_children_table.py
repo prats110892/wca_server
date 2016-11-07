@@ -29,12 +29,12 @@ class RELATIONSHIP_CHILDREN_Table(Base_Table):
 
 			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
 			dataQuery = "%d, %d, %d, %d, %d, %d, %d" %(int(row[3]),
+														int(row[4]),
 														int(row[5]),
 														int(row[6]),
 														int(row[7]),
 														int(row[8]),
-														int(row[9]),
-														int(row[10]))
+														int(row[9]))
 			insertDataQuery += "(" + defaultQuery + dataQuery + "),"
 
 		insertDataQuery = insertDataQuery[:-1]

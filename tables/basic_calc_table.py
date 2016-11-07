@@ -4,9 +4,9 @@ from id_table import ID_Table
 class Base_Calc_Table(object):
 	"This is the base class table class that all other calc table classes will extend"
 
-	columns = ["From Year", "To Year", "Id"] # Just a default definition. You still have to add to all the others
-	column_data_types = ["INT", "INT", "VARCHAR(50) NOT NULL", "FLOAT"] # If all the columns other than id are the same datatype then just 2 entries needed
-	table_extra_meta_data = "FOREIGN KEY(" + columns[2] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + ")"
+	columns = ["From Year", "Id"] # Just a default definition. You still have to add to all the others
+	column_data_types = ["INT", "VARCHAR(50) NOT NULL", "FLOAT"] # If all the columns other than id are the same datatype then just 2 entries needed
+	table_extra_meta_data = "FOREIGN KEY(" + columns[1] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + ")"
 	num_of_rows_to_leave = 1
 
 	def initalize(self) :
@@ -20,12 +20,12 @@ class Base_Calc_Table(object):
 	def deleteTable(self) :
 		return self.dbHelper.deleteTable(self.table_name)
 
-	def insertDataFromCSVFile(self, csvFileName, fromYear, toYear) :
+	def insertDataFromCSVFile(self, csvFileName, fromYear) :
 		csvFile = open(csvFileName, 'rU')
-		insertDataQuery = self.getInsertQueryForCSV(csvFile, fromYear, toYear)
+		insertDataQuery = self.getInsertQueryForCSV(csvFile, fromYear)
 		return self.dbHelper.executeQuery(insertDataQuery)
 
-	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
+	def getInsertQueryForCSV(self, csvFile, fromYear) :
 		skipCount = 0
 		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
 		for line in csvFile:
@@ -34,7 +34,7 @@ class Base_Calc_Table(object):
 				skipCount += 1
 				continue
 
-			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
+			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear)
 			dataQuery = ""
 			for i in range(1, len(row)) :
 				dataQuery += "%f," %(float(row[i]))
@@ -44,5 +44,5 @@ class Base_Calc_Table(object):
 		insertDataQuery += ";"
 		return insertDataQuery
 
-	def getIDAndYearQueryForRow(self, row, fromYear, toYear) :
-		return "%d, %d, '%s'," %(int(fromYear), int(toYear), row[0])
+	def getIDAndYearQueryForRow(self, row, fromYear) :
+		return "%d, '%s'," %(int(fromYear), row[0])
