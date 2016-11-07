@@ -32,6 +32,11 @@ def upload_a_new_file() :
 def download_data() :
 	return render_template("download.html")
 
+
+@app.route("/geographic_calculation")
+def download_data() :
+	return render_template("geographic_calculation.html")
+
 @app.route("/upload_data", methods=["GET", "POST"])
 def upload_file() :
 	if request.method == "POST" :
