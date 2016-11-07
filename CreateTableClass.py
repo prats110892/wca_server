@@ -1,8 +1,8 @@
-import tkinter
+import tkinter 
 
 		# run 'python -m tkinter' on the command line to see if tkinter is set up properly
 		# 	 - this should bring up a little frame with a click me button on it
-		#    - if it doesn't run, you may need to install the TK software manually.
+		#    - if it doesn't run, you may need to install the TK software manually. 
 		#		- i had to install it on my computer, but im not sure about windows/mac
 		#		- I believe you can get the activetcl distro from activestate.com which should work
 import xlrd
@@ -11,11 +11,26 @@ from writeClassFile import writeFile
 from tkinter import filedialog
 from functools import partial
 
-"""
+""" 
 	This tool provides a GUI to create python class files
 
 	see the README for usage instructions
 """
+
+def numToLetter(num):
+	if(num <= 0) :
+		print("Number <= 0 is not valid to map to letter")
+		return str(num)
+	elif(num <= 26) :
+		return chr(num+96)
+	elif(num <=52) :
+		return 'a' + chr((num-26)+96)
+	elif(num <=78) :
+		return 'b' + chr((num-26)+96)
+	else :
+		return str(num) #  78 should be enough columns
+
+
 
 top = tkinter.Tk()
 
@@ -27,11 +42,11 @@ top.maxsize(300,200);
 
 filename = ''
 
-#runs when you click the 'open file...' button. Used to get the filename.
-#also does some parsing by removing the absolute filepath and the .xlsx part.
+#runs when you click the 'open file...' button. Used to get the filename. 
+#also does some parsing by removing the absolute filepath and the .xlsx part. 
 	#this parsed value is set as the default for the tableName entry field
 def openFileCallback() :
-
+    	
 	global filename
 	filename = filedialog.askopenfilename() # show an "Open" dialog box and return the path to the selected file
 	print(filename)
@@ -91,7 +106,7 @@ nextButton.pack(side = 'bottom') #align to the bottom of the window
 
 
 #These frames are kind of weird because they use scrollbars
-	#basically you have to put a Frame (used to hold the widgets) inside of a Canvas,
+	#basically you have to put a Frame (used to hold the widgets) inside of a Canvas, 
 	# attach the Canvas to a Scrollbar,
 	# then put both inside of another Frame (to hold the Canvas/Scrollbar)
 #its just mostly some boilerplate functionality to allow scrolling
@@ -126,9 +141,9 @@ def colsCallback(index) :
 
 buttonsList = []
 
-#this creates the actual buttons. Parses the XLSX and then creates Button objects in a loop.
+#this creates the actual buttons. Parses the XLSX and then creates Button objects in a loop. 
 
-#I added the row number/letter so you don't have to count down to the 15th row
+#I added the row number/letter so you don't have to count down to the 15th row 
 # when working from the mappings doc
 
 def createButtons() :
@@ -139,7 +154,7 @@ def createButtons() :
 
 	for idx, cell_obj in enumerate(row) :
 
-		b2 = tkinter.Button(buttonHolder, text = str(idx) + "/" + chr(idx+97) + " " + cell_obj.value, command = partial(colsCallback, idx))
+		b2 = tkinter.Button(buttonHolder, text = str(idx+1) + "/" + numToLetter(idx+1) + " " + cell_obj.value, command = partial(colsCallback, idx))
 		#partial() is used to provide an argument to colsCallback()
 
 		b2.pack(fill = "x")
@@ -179,19 +194,20 @@ canvas3.create_window((0,0),window=labelHolder, width=200,height=600)
 labelHolder.bind("<Configure>",myfunction3)
 
 entryList = [] #holds the entries (right side pane -- they are text input fields)
-labelList = [] #holds the labels (middle pane -- they are static text once they are created)
+mappingList = [] #holds the labels (middle pane -- they are static text once they are created)
 
 
 #this is run when you click the add button
-#functionally, it adds the mapping as a new label, and creates a new Entry
-#TODO: autofill the entry if it is not a summation
-	#label names like this are basically copied over, or at least its a good place to start
+#functionally, it adds the mapping as a new label, and creates a new Entry for column name
+
 def addLabelCallback() :
 
 	defaultbg = top.cget('bg')
 	labelText = ''
 	#loop through the buttons and check if they are red -- this means they have been clicked
 	#this is pretty unclean code practice but whatever
+	
+	indexList = [] #this is used a little bit later for the Entry pre-filling 
 	for idx, button in enumerate(buttonsList):
 		if(button.cget('bg') ==  "red") :
 
@@ -200,69 +216,79 @@ def addLabelCallback() :
 			button.configure(activebackground = defaultactivebg)
 
 			labelText = labelText + "row[" + str(idx) + "]" + "+"
+			indexList.append(idx)
 
 	#chop the extra plus sign
 	labelText = labelText[:-1]
 
-	#lframe/eframe are used here to maintain a fixed height
-	# so the labels/Entry fields line up properly
-		#this was way too annoying to do with tkinter widgets
-	lframe = tkinter.Frame(labelHolder)
-	lframe.pack()
-	lframe.pack_propagate(0)
+	#if you haven't clicked any buttons, its not a valid mapping, so don't do anything
+	if(len(indexList) != 0) :
+		#lframe/eframe are used here to maintain a fixed height
+		# so the labels/Entry fields line up properly
+			#this was way too annoying to do with tkinter widgets
+		lframe = tkinter.Frame(labelHolder)
+		lframe.pack()
+		lframe.pack_propagate(0)
 
-	#heres the actual label
-	l2 = tkinter.Label(lframe)
-	l2.configure(text=labelText)
-	l2.pack()
+		#heres the actual label
+		currentMapping = tkinter.Entry(lframe)
+		currentMapping.insert(0, labelText)
+		currentMapping.pack()
 
-	lframe.configure(height = 25)
-	lframe.pack(fill = "both")
-	labelList.append(l2)
+		lframe.configure(height = 25)
+		lframe.pack(fill = "both")
+		mappingList.append(currentMapping)
+		
 
-	eframe = tkinter.Frame(entryHolder)
-	eframe.pack()
-	eframe.pack_propagate(0)
+		eframe = tkinter.Frame(entryHolder)
+		eframe.pack()
+		eframe.pack_propagate(0)
 
-	#heres the actual Entry
-	e2 = tkinter.Entry(eframe)
-	e2.insert(0, "entry text")
-	e2.pack()
+		#heres the actual Entry
+		e2 = tkinter.Entry(eframe)
 
-	eframe.configure(height = 25)
-	eframe.pack(fill = "both")
-	entryList.append(e2)
+		#prefill the entry if the mapping is not a summation
+		   #reasoning: if you are mapping 1 column from input to output, you might as well
+		   # use the column name that is already there
+		#this is a really hacky manipulation of strings
+		#TODO: find a cleaner way to do it
+
+		if(len(indexList) == 1) : #there is only 1 index (meaning it is not a summation)
+
+			#get the column name from the button in buttonList
+			defaultValue = buttonsList[int(indexList[0])].cget("text")
+			#split on the space to remove the '1/A' part in the beginning (second parameter '1' means we split only 1 time)
+			defaultValue = defaultValue.split(" ", 1)[1]
+			e2.insert(0, defaultValue) #insert it into the new entry
+
+		else : #summation case: just put in a default and have the user change it in the input field
+			e2.insert(0, "column name")
+
+		e2.pack()
+
+		eframe.configure(height = 25)
+		eframe.pack(fill = "both")
+		entryList.append(e2)
 
 #this is run when you hit the finish button
 #it does some formatting on the DataQuery string
 	#TODO: probably should move that formatting stuff over to writeClassFile.py
-#
 
 def finishCallback() :
 
-	#this adds the '%d' part of the DataQuery string
-	dataQueryStr = "\""
-	for label in labelList :
-		dataQueryStr = dataQueryStr + "%d, "
-	#chop the extra ', ' and add closing quotes
-	dataQueryStr = dataQueryStr[:-2]
-	dataQueryStr = dataQueryStr + "\""
-
-	#this puts the row[x] values into 'int(row[x]),' form
-	dataQueryStr = dataQueryStr + " %(\n"
-	for label in labelList :
-		dataQueryStr = dataQueryStr + "\t\t\t\tint(" + label.cget("text") + "),\n"
-
-	dataQueryStr = dataQueryStr[:-2]
-	dataQueryStr = dataQueryStr + ")"
 
 	#get the string value from each Entry in the list
 	colNamesList = []
 	for entry in entryList :
 		colNamesList.append(entry.get())
 
+	#Get the mappings from the entry
+	mappingsToWrite = []
+	for mapping in mappingList :
+		mappingsToWrite.append(mapping.get())
+
 	#call the function from writeClassFile.py, with the args from this file
-	writeFile(tableName, colNamesList, dataQueryStr)
+	writeFile(tableName, colNamesList, mappingsToWrite)
 
 	#close the window
 	top.destroy()

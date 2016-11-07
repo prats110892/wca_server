@@ -2,7 +2,11 @@ import os
 
 #This file takes the column list and data mappings and actually writes the .py file.
 
-def writeFile(name, columnsList, dataQueryStr) :
+#TODO:
+	#add a write to the __init__.py files (create if doesn't exist)
+	#fix the 
+
+def writeFile(name, columnsList, mappingsList) :
 	
 	#TODO make this cleaner -- probably use a triple quote string and 1 outfile.write() call
 	outFile = open(name.lower() + "_table.py", 'w')
@@ -38,7 +42,41 @@ def writeFile(name, columnsList, dataQueryStr) :
 			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)\n"""
 
 	outFile.write(str1)
-	outFile.write("\t\t\tdataQuery = " + dataQueryStr)
+	outFile.write("\t\t\tdataQuery = ")
+
+	#this loops through the columns list and does some tabbing and newlines and stuff
+	dataQueryStr = "\""
+	for label in mappingsList :
+		dataQueryStr = dataQueryStr + "%d, "
+	#chop the extra ', ' and add closing quotes
+
+	dataQueryStr = dataQueryStr[:-2]
+	dataQueryStr = dataQueryStr + "\""
+	dataQueryStr = dataQueryStr + " %(\n"
+
+	for mapping in mappingsList :
+
+		if(mapping.count('[') > 1) :
+			#do int() on each row[x]
+			subsections = mapping.split(']')
+			#remove the empy string at the end of this list
+			subsections.pop()
+			dataQueryStr = dataQueryStr + "\t\t\t\t"
+			for string in subsections :
+				#print("str:" + string)
+				dataQueryStr = dataQueryStr + string.split('row')[0]+ "int(row" + string.split('row')[1] + "])" 
+
+		else :
+			dataQueryStr = dataQueryStr + "\t\t\t\tint(" + mapping + ")" 
+		#write the 
+		dataQueryStr = dataQueryStr + ",\n"
+
+
+	#chop extra ',\n' and write the closing parenthesis
+	dataQueryStr  = dataQueryStr[:-2] + ")\n"
+	outFile.write(dataQueryStr )
+
+
 
 	str1 = """
 			insertDataQuery += "(" + defaultQuery + dataQuery + "),"
