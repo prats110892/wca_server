@@ -30,6 +30,9 @@ def getTableName(client_table_name) :
 			'ZIP' : ZIP_CALC_Table.table_name,
 	}[client_table_name]
 
+def getCalculationsTableObject(calc_table_name) :
+	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(calc_table_name)]
+
 def parseAndInsertCalculationsData(csvFile, tableName, fromDate) :
 	stored_table_name = getTableName(tableName)
 	tableObject = TABLE_NAME_TO_OBJECT_MAPPING[stored_table_name]

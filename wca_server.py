@@ -8,6 +8,9 @@ from flask_restful import Resource, Api
 from werkzeug.utils import secure_filename
 from tables import parseAndInsertData, updateIdTableWithNewCSVFile, parseAndInsertCalculations
 from tables.categories import DataCategories
+from tables.output.base_output_table import Base_Output_Table
+from tables.demographics import getTableObject
+from tables.calculations import getCalculationsTableObject
 
 
 app = Flask(__name__)
@@ -86,11 +89,14 @@ def uploaded_file(filename):
 
 class GetCSVFile(Resource) :
 	def get(self) :
+		baseOutputTable = Base_Output_Table()
+		baseOutputTable.initalize(2011, getTableObject("Relationship_Children"), getCalculationsTableObject("NPU"))
+		outputFileLocation = baseOutputTable.getOutputCSVPath()
 		return {
 			"name" : "some_name_here",
 			"fromYear" : 1993,
 			"toYear" : 1997,
-			"downloadLink" : "http://hello.fuckoff.com"
+			"downloadLink" : outputFileLocation
 			}
 
 api.add_resource(GetCSVFile, "/getcsvfile")
