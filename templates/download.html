@@ -78,9 +78,9 @@
 							 	       </select>
 							        </div>
 					        	</div>
-						    </form>					    
+						    				    
 							<hr>
-					        <form class="form-horizontal" role="form">
+					        
 					            <div class="form-group form-group-lg">
 					                <label for="dataDetail" class="col-lg-3 control-label">Details</label>
 					                <div class="col-lg-5">
@@ -89,8 +89,24 @@
 					                	</select>
 					             	</div>
 					           	</div>
-					        </form>
-					        <form class="form-horizontal" role="form">			
+
+					           	<div class="form-group form-group-lg">
+					                <label for="dataDetail" class="col-lg-3 control-label">Geographic area</label>
+					                <div class="col-lg-5">
+					                	<select id="areaDetail" class="selectpicker show-tick form-control" title="choose what your data contains...">
+                                         	<option>Atlanta Public School (APS)</option>		    						
+		    							  	<option>Beltline</option>		    							
+		    							  	<option>Congressional District (CD)</label>   					
+		    							 	<option>Choice Percent</option>
+		    								<option>Neighborhood</option>
+											<option>Neighborhood Planning Unit (NPU)</option>	    						
+		    								<option>Tax Allocation District (TAD)</option>		    	
+		    								<option>Zone Improvement Plan (ZIP)</option>
+					                	</select>
+					             	</div>
+					           	</div>
+					        
+					        			
 					            <div class="form-group form-group-md">
 					            	<label for="dateFrom" class="col-lg-3 control-label">Select Year</label>
 
@@ -104,11 +120,12 @@
 										</div>
 									</div>
 					           	</div>
-					        </form>
+					        
 							<hr>
 				    	</div><!--div panel body-->
 		    		</div><!--panel success-->   		
-					<button type="button" class="btn btn-success btn-lg" style="float:right">Submit</button>
+					<button type="submit" class="btn btn-success btn-lg" style="float:right" onclick="downloadRequest()">Submit</button>
+					</form>
 				</div>
     		</div>
 		</div>
@@ -119,6 +136,11 @@
     </script>
 	</script>
 	<script type="text/javascript">
+
+	function downloadRequest() {
+		console.log("inside downloadRequest");
+		}
+
         $(function () {
             $('#datetimepicker8').datetimepicker({
 				format: "yyyy",
