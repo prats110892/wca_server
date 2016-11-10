@@ -1,6 +1,10 @@
+import os
 from tables.Dbhelper import Dbhelper
 from tables.base_table_class import Base_Table
 from tables.basic_calc_table import Base_Calc_Table
+
+CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = CURRENT_DIRECTORY + "/uploads"
 
 class Base_Output_Table(object):
 	"This is the base table class that all other table classes will extend"
@@ -24,7 +28,7 @@ class Base_Output_Table(object):
 		return self.dbHelper.executeQuery(getColumnsQuery).fetchall()
 
 	def getSumNumbers(self, table_name) :
-		#321M200US131206004000 is the GEO_ID for the whole city of atlanta. 
+		#321M200US131206004000 is the GEO_ID for the whole city of atlanta.
 		#selecting this row is useful because it contains the total of each column for Atlanta
 		selectQuery = """SELECT * FROM `{0}` WHERE Id = '321M200US131206004000' AND `{1}` <= {3} AND `{2}` >= {3};""".format(self.dataTableObjectName, Base_Table.columns[0], Base_Table.columns[1], self.forYear)
 
@@ -88,8 +92,8 @@ class Base_Output_Table(object):
 			for regionIndex in range(calc_cols_to_skip, len(regionTableMatrix[0])) :
 				#we are getting a sum, so this is our running total.
 				variableRegionPopulation = 0
-				
-				#VariableAtlanta and TotalAtlanta are already calculated, so I'm just pulling a row from the DB basically. 
+
+				#VariableAtlanta and TotalAtlanta are already calculated, so I'm just pulling a row from the DB basically.
 				variableAtlantaPopulation = int(sumVals[0][variableIndex])
 				totalAtlantaPopulation = int(sumVals[0][data_cols_to_skip])
 				totalRegionPopulation = 0
@@ -114,7 +118,7 @@ class Base_Output_Table(object):
 
 					if (percentInCurrentRegion > 0 and variableIndex == data_cols_to_skip  and regionIndex == calc_cols_to_skip) :
 						print (str(i) + " " + str(totalAtlantaPopulation) + " " + str(percentInCurrentRegion))
-					
+
 
 				if (variableIndex == data_cols_to_skip) :
 					#totalAtlantaPopulation = variableAtlantaPopulation
@@ -136,4 +140,8 @@ class Base_Output_Table(object):
 					outputLine = variableName + ", " + regionString + ", " + variableRegionPopulationString + ", " + variableAtlantaPopulationString + ", " + totalRegionPopulationString + ", " + totalAtlantaPopulationString
 					# write to the CSV (comma separated columns, newline separated rows)
 					fileToWrite.write(outputLine + "\n")
-		return "output/" + fileName
+
+		fileToWrite.close()
+		filename = fileToWrite.name
+		os.rename(os.path.join(CURRENT_DIRECTORY, filename), os.path.join(UPLOAD_FOLDER, filename))
+		return filename

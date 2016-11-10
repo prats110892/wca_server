@@ -5,6 +5,7 @@ from categories import DataCategories
 import base_table_class
 import basic_calc_table
 import Dbhelper
+import wca_server
 
 TABLE_NAME_TO_OBJECT_MAPPING = {
 		 ID_Table.table_name : ID_Table()

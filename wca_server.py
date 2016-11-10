@@ -1,18 +1,18 @@
 import os, sys
+import time
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(CURRENT_DIRECTORY)
 
-from flask import Flask, request, redirect, url_for, send_from_directory, render_template
+from flask import Flask, request, redirect, url_for, send_from_directory, render_template, make_response, after_this_request
 from flask_restful import Resource, Api
 from werkzeug.utils import secure_filename
 from tables import parseAndInsertData, updateIdTableWithNewCSVFile, parseAndInsertCalculations
 from tables.categories import DataCategories
-from tables.output.base_output_table import Base_Output_Table
 from tables.demographics import getTableObject
 from tables.calculations import getCalculationsTableObject
 from upload_response import getReponseBody
-
+from base_output_table import Base_Output_Table
 
 app = Flask(__name__)
 api = Api(app)
@@ -38,16 +38,16 @@ def upload_data_file() :
 		if 'data-file' not in request.files or file.filename == '':
 			getReponseBody("File is missing")
 			return render_template("upload_response.html")
-		if request.form.get("category") is "" :
+		if request.form.get("category") == "" :
 			getReponseBody("Category is missing")
 			return render_template("upload_response.html")
-		if request.form.get("table-name") is "" :
+		if request.form.get("table-name") == "" :
 			getReponseBody("Category is missing")
 			return render_template("upload_response.html")
-		if request.form.get("from-date") is "" :
+		if request.form.get("from-date") == "" :
 			getReponseBody("From Date is missing")
 			return render_template("upload_response.html")
-		if request.form.get("to-date") is "":
+		if request.form.get("to-date") == "":
 			getReponseBody("To Date is missing")
 			return render_template("upload_response.html")
 
@@ -67,10 +67,10 @@ def upload_calc_file() :
 		if 'calc-file' not in request.files or file.filename == '':
 			getReponseBody("File is missing")
 			return render_template("upload_response.html")
-		if request.form.get("table-name") is "" :
+		if request.form.get("table-name") == "" :
 			getReponseBody("Category is missing")
 			return render_template("upload_response.html")
-		if request.form.get("from-date") is "" :
+		if request.form.get("from-date") == "" :
 			getReponseBody("From Date is missing")
 			return render_template("upload_response.html")
 
@@ -83,32 +83,42 @@ def upload_calc_file() :
 			return render_template("upload_response.html")
 	return render_template("geographic_calculation.html")
 
+def deleteExistingFiles() :
+	listOfFiles = [f for f in os.listdir(UPLOAD_FOLDER) if os.path.isfile(os.path.join(UPLOAD_FOLDER, f))]
+	for file in listOfFiles :
+		os.remove(os.path.join(UPLOAD_FOLDER, file))
+
 @app.route("/download_data", methods=["GET", "POST"])
 def download_data() :
-	# if request.method == "POST" :
-	# 	if request.form.get("category") is "" :
-	# 		getReponseBody("Category is missing")
-	# 		return render_template("upload_response.html")
-	# 	if request.form.get("table_name") is "" :
-	# 		getReponseBody("Detail is missing")
-	# 		return render_template("upload_response.html")
-	# 	if request.form.get("for_year") is "" :
-	# 		getReponseBody("Date is missing")
-	# 		return render_template("upload_response.html")
-	# 	if request.form.get("region") is "" :
-	# 		getReponseBody("Output region is missing")
-	# 		return render_template("upload_response.html")
-	#
-	# 	category = request.form.get("category")
-	# 	table_name = request.form.get("table_name")
-	# 	forYear = int(request.form.get("for_year"))
-	# 	region = request.form.get("region")
-	#
-	#
-	# 	base_output_table = Base_Output_Table()
-	# 	base_output_table.initalize(forYear, getTableObject(table_name), getCalculationsTableObject(region))
-	# 	outputFileLocation = secure_filename(base_output_table.getOutputCSVPath())
-	#
+	deleteExistingFiles()
+	if request.method == "POST" :
+		print('Inside post request')
+		if request.form.get("category") == "" :
+			getReponseBody("Category is missing")
+			return render_template("upload_response.html")
+		if request.form.get("table_name") == "" :
+			getReponseBody("Detail is missing")
+			return render_template("upload_response.html")
+		if request.form.get("date_from") == "" :
+			getReponseBody("Date is missing")
+			return render_template("upload_response.html")
+		if request.form.get("region") == "" :
+			getReponseBody("Output region is missing")
+			return render_template("upload_response.html")
+
+		category = request.form.get("category")
+		table_name = request.form.get("table_name")
+		forYear = int(request.form.get("date_from"))
+		region = request.form.get("region")
+		print (category + " " + table_name + " " + str(forYear) + " " + region)
+
+		base_output_table = Base_Output_Table()
+		base_output_table.initalize(forYear, getTableObject(table_name), getCalculationsTableObject(region))
+		filename = base_output_table.getOutputCSVPath()
+		print (filename)
+		uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
+		return send_from_directory(directory=uploads, filename=filename, as_attachment=True)
+
 	return render_template("download.html")
 
 
