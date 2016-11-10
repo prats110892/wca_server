@@ -6,11 +6,24 @@ import base_table_class
 import basic_calc_table
 import Dbhelper
 
-def updateIdTableWithNewCSVFile(csvFile) :
-	return id_table.ID_Table().insertDataFromCSVFile(csvFile)
+TABLE_NAME_TO_OBJECT_MAPPING = {
+		 ID_Table.table_name : ID_Table()
+}
+
+def getTableName(client_table_name) :
+	return {
+			'GEO_ID' : ID_Table.table_name
+	}[client_table_name]
+
+def updateIdTableWithNewCSVFile(csvFile, table_name) :
+	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(table_name)].insertDataFromCSVFile(csvFile)
 
 def parseAndInsertData(category, csv_file, table_name, from_Date, to_Date) :
 	print(category)
+	if (category.lower() == DataCategories.ID.lower()) :
+		print("Inside ID")
+		updateIdTableWithNewCSVFile(csvFile=csv_file)
+
 	if category.lower() == DataCategories.DEMOGRAPHICS.lower() :
 		print("Inside Demographics")
 		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)

@@ -10,28 +10,24 @@ class ID_Table(object):
 	table_extra_meta_data = "PRIMARY KEY(" + columns[0] + ")"
 	num_of_rows_to_leave = 2
 
-	Dbhelper = None
+	def __init__ (self) :
+		self.dbHelper = Dbhelper()
+		if self.dbHelper.checkIfTableExists(ID_Table.table_name) is False:
+			self.createTable()
 
-	def __init__ () :
-		Dbhelper = Dbhelper()
+	def createTable(self) :
+		return self.dbHelper.createTable(ID_Table.table_name, ID_Table.columns, ID_Table.column_data_types, ID_Table.table_extra_meta_data)
 
-	def createTable() :
-		return Dbhelper.createTable(table_name, columns, column_data_types, table_extra_meta_data)
+	def deleteTable(self) :
+		return self.dbHelper.deleteTable(table_name)
 
-	def deleteTable() :
-		return Dbhelper.deleteTable(table_name)
-
-	def insertDataFromCSVFile(csvFileName) :
-		if Dbhelper.checkIfTableExists(table_name) is True:
-			deleteTable() # Delete existing primary id mappings because new ones are being provided
-
-		createTable()	#Create a new Primary Mappings table as it seems to have been updates
+	def insertDataFromCSVFile(self, csvFileName) :
 		csvFile = open(csvFileName)
 		csvReader = csv.reader(csvFile)
-		insertDataQuery = getInsertQueryForCSV(csvReader)
-		return Dbhelper.executeQuery(insertDataQuery)
+		insertDataQuery = self.getInsertQueryForCSV(csvReader)
+		return self.dbHelper.executeQuery(insertDataQuery)
 
-	def getInsertQueryForCSV(csvReader) :
+	def getInsertQueryForCSV(self, csvReader) :
 		skipCount = 0
 		insertDataQuery = "INSERT INTO " + table_name + " VALUES "
 		for row in csvReader:
