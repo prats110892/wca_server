@@ -112,6 +112,6 @@ class Base_Output_Table(object):
 					totalAtlantaPopulationString = str(totalAtlantaPopulation)
 
 					outputLine = variableName + ", " + regionString + ", " + variableRegionPopulationString + ", " + variableAtlantaPopulationString + ", " + totalRegionPopulationString + ", " + totalAtlantaPopulationString
-					write to the CSV (comma separated columns, newline separated rows)
+					# write to the CSV (comma separated columns, newline separated rows)
 					fileToWrite.write(outputLine + "\n")
 		return "output/" + fileName
