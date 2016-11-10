@@ -23,6 +23,11 @@ class Base_Output_Table(object):
 		getColumnsQuery = getColumnsQuery + "\'" + table_name + "\';"
 		return self.dbHelper.executeQuery(getColumnsQuery).fetchall()
 
+	def getSumNumbers(self, table_name) :
+		selectQuery = "SELECT * FROM " + table_name + " WHERE  Id = '321M200US131206004000'"
+
+		return self.dbHelper.executeQuery(selectQuery).fetchall()
+
 	def populateMatrices(self) :
 		self.dataMatrix = []
 		self.calcMatrix = []
@@ -32,6 +37,7 @@ class Base_Output_Table(object):
 		for row in joinedData :
 			self.dataMatrix.append(row[:len(self.dataTableObject.columns)])
 			self.calcMatrix.append(row[len(self.dataTableObject.columns):])
+		#print(str(len(self.dataMatrix)) + ", " + str(len(self.calcMatrix)))
 
 	def getImmediateCalcYear(self, requestedYear) :
 		query = "SELECT `{0}` FROM `{1}` WHERE `{0}`<={2};".format(Base_Calc_Table.columns[0], self.calcTableObjectName, requestedYear)
@@ -68,7 +74,11 @@ class Base_Output_Table(object):
 
 		variableName = ''
 		#this loops through all the variables (data table columns)
-		totalAtlantaPopulation = 0
+		#totalAtlantaPopulation = 0
+
+
+		sumVals = self.getSumNumbers(self.dataTableObjectName)
+		totalAtlantaPopulation = int(sumVals[0][data_cols_to_skip])
 
 		for variableIndex in range(data_cols_to_skip, len(dataTableMatrix[0])) :
 			variableWritten = 0
@@ -76,7 +86,10 @@ class Base_Output_Table(object):
 			for regionIndex in range(calc_cols_to_skip, len(regionTableMatrix[0])) :
 				#we are getting a sum, so this is our running total.
 				variableRegionPopulation = 0
-				variableAtlantaPopulation = 0
+				
+				#VariableAtlanta and TotalAtlanta are already calculated, so i'm just pulling a row from the DB basically. 
+				variableAtlantaPopulation = int(sumVals[0][variableIndex])
+				totalAtlantaPopulation = int(sumVals[0][data_cols_to_skip])
 				totalRegionPopulation = 0
 				#this loops through the rows of data and selects a cell at a time
 				for i in range(len(regionTableMatrix)) :
@@ -88,16 +101,23 @@ class Base_Output_Table(object):
 					  #as an example, 0.0462 of census tract '130670303391' is inside NPU 'A'
 					percentInCurrentRegion = float(regionTableMatrix[i][regionIndex])
 					#so we multiply the total for a variable * the percent in the region
-					#the sum all of these will give us the total for a variable for a region
-					  #effectively, we are
-					if (percentInCurrentRegion > 0 and variableIndex == data_cols_to_skip + 1 and regionIndex == calc_cols_to_skip) :
+					#the sum of all of these will give us the total for a variable for a region
+					if (percentInCurrentRegion > 0 and variableIndex == data_cols_to_skip  and regionIndex == calc_cols_to_skip) :
 						print (str(i) + " " + str(censusTractTotal) + " " + str(percentInCurrentRegion))
 					variableRegionPopulation += (censusTractTotal * percentInCurrentRegion)
-					totalRegionPopulation += (totalAtlantaPopulation * percentInCurrentRegion)
-					variableAtlantaPopulation += censusTractTotal
+
+					#to calculate totalRegionPopulation, we use data from the total column (column 3)
+					  #that's why its dataTableMatrix[i][data_cols_to_skip]
+					totalRegionPopulation += (int(dataTableMatrix[i][data_cols_to_skip]) * percentInCurrentRegion)
+
+					if (percentInCurrentRegion > 0 and variableIndex == data_cols_to_skip  and regionIndex == calc_cols_to_skip) :
+						print (str(i) + " " + str(totalAtlantaPopulation) + " " + str(percentInCurrentRegion))
+					
 
 				if (variableIndex == data_cols_to_skip) :
-					totalAtlantaPopulation = variableAtlantaPopulation
+					#totalAtlantaPopulation = variableAtlantaPopulation
+					pass
+
 				else :
 					if (variableWritten == 0) :
 						variableName = str(columnsListData[variableIndex])[2:-3]
