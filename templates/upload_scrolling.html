@@ -13,13 +13,14 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='generalJS/dragAndDrop.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='generalJS/dataCategory.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap-select.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap-datetimepicker.min.js') }}"></script>
-
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap-datetimepicker.min.js') }}"></script> 
+ 
 
 	<link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='bootstrap/css/bootstrap-select.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='bootstrap/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-	<link href="{{ url_for('static', filename='generalCSS/specialStyles.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='generalCSS/specialStyles.css') }}" rel="stylesheet"> 
+
 
 		<script>
 				$(document).ready(function() {
@@ -99,7 +100,6 @@
 							            	<option>Housing</option>
 							            	<option>Income</option>
 							            	<option>Transportation</option>
-							            	<option>GEO ID</option>
 							 	       </select>
 							        </div>
 					        	</div>
@@ -119,7 +119,7 @@
 					            	<label for="dateFrom" class="col-lg-3 control-label">Date Range</label>
 
 					            	<div class="col-md-4">
-                                        <div class='input-group date' id='datetimepicker8'>
+                                        <div class='input-group date' id='datetimepicker8' onchange="updateTo()">
                								 <input type='text' name="from-date" class=" selectpicker form-control" placeholder="from" id="fromDate"/>
                 							    <span class="input-group-addon">
                    									<span class="glyphicon glyphicon-calendar">
@@ -167,8 +167,11 @@
         $('#datetimepicker8').datetimepicker({
 			format: "yyyy",
 		    startView: 'decade',
-		    minView: 'decade',
-		    viewSelect: 'decade',
+        viewSelect: 'decade',
+		    minView: '1960',
+        startDate: '1960',
+        maxView: '2016',
+        endDate: '2016',
 		    autoclose: true,
 		    pickerPosition: "bottom-left",
 
@@ -178,13 +181,22 @@
         $('#datetimepicker9').datetimepicker({
             format: "yyyy",
 		    startView: 'decade',
-		    minView: 'decade',
-		    viewSelect: 'decade',
+        minView: '1960',
+        startDate: '1960',
+        maxView: '2016',
+        endDate: '2016',
 		    autoclose: true,
 		    pickerPosition: "bottom-left"
         });
 
     });
+
+    function updateTo()
+    {
+      var picked = $('#datetimepicker8').data('date')
+      $('#datetimepicker9').datetimepicker('setStartDate', picked)
+    }
+
     </script>
 
   </body>
