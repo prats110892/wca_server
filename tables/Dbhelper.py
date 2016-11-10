@@ -7,7 +7,7 @@ class Dbhelper :
 		self.db = None
 
 	def openConnection(self) :
-		self.db = MySQLdb.connect(host="localhost",  # your host, usually localhost
+		self.db = MySQLdb.connect(host="127.0.0.1",port=3306,  # your host, usually localhost
 							user="root",         # your username
 							passwd="aguamenti92",
 							db="wca_data_dashboard")
