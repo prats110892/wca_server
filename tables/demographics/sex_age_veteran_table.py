@@ -1,4 +1,9 @@
-from tables.base_table_class import Base_Table
+import sys
+import os.path
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+
+from base_table_class import Base_Table
 
 class SEX_AGE_VETERAN_Table(Base_Table):
 	"The definition of the Sex Age Veteran Table in the database"

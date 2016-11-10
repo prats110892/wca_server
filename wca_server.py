@@ -17,7 +17,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-UPLOAD_FOLDER = CURRENT_DIRECTORY + "/uploads"
+UPLOAD_FOLDER = CURRENT_DIRECTORY + "\\uploads"
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER

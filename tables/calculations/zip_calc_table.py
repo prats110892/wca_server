@@ -1,4 +1,9 @@
-from tables.basic_calc_table import Base_Calc_Table
+import sys
+import os.path
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+
+from basic_calc_table import Base_Calc_Table
 
 class ZIP_CALC_Table(Base_Calc_Table):
 	"The definition of the ZIP Calc in the database"

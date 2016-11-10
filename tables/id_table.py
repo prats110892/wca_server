@@ -2,7 +2,7 @@ from Dbhelper import Dbhelper
 import csv
 
 class ID_Table(object):
-	"The definition of the ID table in the database"
+	# "The definition of the ID table in the database"
 
 	table_name = "GEO_ID"
 	columns = ["Id", "Id2", "Geography"]

@@ -8,7 +8,7 @@ var details_options = {
     Housing: ['Household-Type','Household_Relatives','Household_65', 'Household_Tenure'],
     Income: ['First Option', 'Second Option', 'Third Option'],
     Transportation: ['First Option', 'Second Option', 'Third Option'],
-    GEO_ID: ['Id codes']
+    GEO_ID: ['Id_codes']
 };
 
 function populateDetails() {

@@ -1,4 +1,9 @@
-from tables.base_table_class import Base_Table
+import sys
+import os.path
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+
+from base_table_class import Base_Table
 
 class SEX_MARITAL_STATUS_Table(Base_Table):
 	"The definition of the Sex Marital Status Table in the database"
