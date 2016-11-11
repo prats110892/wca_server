@@ -5,7 +5,7 @@ CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(CURRENT_DIRECTORY)
 
 from flask import Flask, request, redirect, url_for, send_from_directory, render_template, make_response, after_this_request
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 from werkzeug.utils import secure_filename
 from tables import parseAndInsertData, updateIdTableWithNewCSVFile, parseAndInsertCalculations
 from tables.categories import DataCategories
@@ -127,8 +127,20 @@ def uploaded_file(filename):
 	return send_from_directory(app.config['UPLOAD_FOLDER'],
 								filename)
 
-class GetCSVFile(Resource) :
-	def get(self) :
+class GetRegionDataAPI(Resource) :
+	def __init__(self) :
+		self.reqparse = reqparse.RequestParser()
+		self.reqparse.add_argument("category", required=True, help="category cannot be blank")
+		self.reqparse.add_argument("table_name", required=True, help="table_name cannot be blank")
+		self.reqparse.add_argument("region", required=True, help="region cannot be blank")
+		self.reqparse.add_argument("date_from", type=int, required=True, help="date_from cannot be blank")
+		super(GetRegionDataAPI, self).__init__()
+
+	def post(self) :
+		args = self.reqparse.parse_args()
+		for k, v in args.iteritems() :
+			print (str(k) + ":" + str(v))
+
 		baseOutputTable = Base_Output_Table()
 		baseOutputTable.initalize(2011, getTableObject("Relationship_Children"), getCalculationsTableObject("NPU"))
 		outputFileLocation = baseOutputTable.getOutputCSVPath()
@@ -139,7 +151,7 @@ class GetCSVFile(Resource) :
 			"downloadLink" : outputFileLocation
 			}
 
-api.add_resource(GetCSVFile, "/getcsvfile")
+api.add_resource(GetRegionDataAPI, "/api/getregiondata", endpoint="getregiondata")
 
 def insertCalculationsIntoDatabase(uploadFilePath, request) :
 	tableName = request.form.get("table-name")
