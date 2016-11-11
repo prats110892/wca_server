@@ -24,7 +24,7 @@ def getTableName(client_table_name) :
 def getTableObject(client_table_name) :
 	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(client_table_name)]
 
-def parseAndInsertDemographicData(csvFile, tableName, fromDate, toDate) :
+def parseAndInsertTransportationData(csvFile, tableName, fromDate, toDate) :
 	stored_table_name = getTableName(tableName)
 	tableObject = TABLE_NAME_TO_OBJECT_MAPPING[stored_table_name]
 	return tableObject.insertDataFromCSVFile(csvFile, fromDate, toDate)
