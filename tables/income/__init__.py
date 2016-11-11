@@ -52,7 +52,7 @@ def getTableName(client_table_name) :
 	}[client_table_name]
 
 
-def parseAndInsertDemographicData(csvFile, tableName, fromDate, toDate) :
+def parseAndInsertIncomeData(csvFile, tableName, fromDate, toDate) :
 	print(tableName)
 	stored_table_name = getTableName(tableName)
 	print(stored_table_name)
