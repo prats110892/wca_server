@@ -21,7 +21,7 @@ def getTableName(client_table_name) :
 			'Workers_Sex_Place_Work_State_County' : WORKERS_SEX_PLACE_WORK_STATE_COUNTY_Table.table_name,
 	}[client_table_name]
 
-def getTableObject(client_table_name) :
+def getTransportationTableObject(client_table_name) :
 	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(client_table_name)]
 
 def parseAndInsertTransportationData(csvFile, tableName, fromDate, toDate) :

@@ -6,7 +6,7 @@ class SEX_SCHOOL_ENROLLMENT_LEVEL_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = SEX_SCHOOL_ENROLLMENT_LEVEL_Table.table_name
-		self.columns = Base_Table.columns + ["Total population 3 years and over","Enrolled in school","Not enrolled in school","Enrolled in school","Nursery school, preschool","Kindergarten","Grade 1 to grade 4","Grade 5 to grade 8","Grade 9 to grade 12","College undergraduate","Graduate or professional school","Enrolled in school","Public","Private","Enrolled in nursery school, preschool","Public","Private","Enrolled in kindergarten","Public","Private","Enrolled in grade 1 to grade 4","Public","Private","Enrolled in grade 5 to grade 8","Public","Private","Enrolled in grade 9 to grade 12","Public","Private","Enrolled in college undergraduate years","Public","Private","Enrolled in graduate or professional school","Public","Private"]
+		self.columns = Base_Table.columns + ["Total population 3 years and over","Enrolled in school","Not enrolled in school","Enrolled in school 2","Nursery school, preschool","Kindergarten","Grade 1 to grade 4","Grade 5 to grade 8","Grade 9 to grade 12","College undergraduate","Graduate or professional school","Enrolled in school 3","Public","Private","Enrolled in nursery school, preschool","Public 3","Private 2","Enrolled in kindergarten","Public 4","Private 3","Enrolled in grade 1 to grade 4","Public 5","Private 4","Enrolled in grade 5 to grade 8","Public 6","Private 5","Enrolled in grade 9 to grade 12","Public 7","Private 6","Enrolled in college undergraduate years","Public 8","Private 7","Enrolled in graduate or professional school","Public 9","Private 8"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

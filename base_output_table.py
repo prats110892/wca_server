@@ -145,10 +145,9 @@ class Base_Output_Table(object):
 		filename = fileToWrite.name
 		os.rename(os.path.join(CURRENT_DIRECTORY, filename), os.path.join(UPLOAD_FOLDER, filename))
 		return filename
-	
-	
-	def getJSON(self) : 
 
+
+	def getJSON(self) :
 		#this gets a matrix of all the calc_npu data
 		regionTableMatrix = self.calcMatrix
 		dataTableMatrix = self.dataMatrix
@@ -159,36 +158,33 @@ class Base_Output_Table(object):
 		columnsListData = self.getColumnNames(self.dataTableObjectName)
 		columnsListCalc = self.getColumnNames(self.calcTableObjectName)
 
-
-
-
 		variableName = ''
 		#this loops through all the variables (data table columns)
 		#totalAtlantaPopulation = 0
 		sumVals = self.getSumNumbers(self.dataTableObjectName)
 		totalAtlantaPopulation = int(sumVals[0][data_cols_to_skip])
 
-		jsonString = "{\"total_atlanta_pop\" : " + str(totalAtlantaPopulation) + ", \n"
+		jsonString = '{"total_atlanta_pop" : ' + str(totalAtlantaPopulation) + ','
 
 
-		variablesString = "\"variables_data\" : [\n"
-		regionsString = "\"total_region_pops\" : [\n"
+		variablesString = '"variables_data" : ['
+		regionsString = '"total_region_pops" : ['
 		for variableIndex in range(data_cols_to_skip, len(dataTableMatrix[0])) :
 			variableWritten = 0
 			#this loops through all the regions (calc table columns)
-			if(variableIndex != data_cols_to_skip) : 
+			if(variableIndex != data_cols_to_skip) :
 
 				variableAtlantaPopulation = int(sumVals[0][variableIndex])
-				variablesString += "{\"variable_name\" : \"" + str(columnsListData[variableIndex])[2:-3] + "\",\n"
-				variablesString += "\"var_atlanta_pop\" : " +	str(variableAtlantaPopulation) + ",\n"
-				variablesString += "\"region_data\" : [\n"
+				variablesString += '{"variable_name" : "' + str(columnsListData[variableIndex])[2:-3] + '",'
+				variablesString += '"var_atlanta_pop" : ' +	str(variableAtlantaPopulation) + ','
+				variablesString += '"region_data" : ['
 
 
 			for regionIndex in range(calc_cols_to_skip, len(regionTableMatrix[0])) :
 				#we are getting a sum, so this is our running total.
 				variableRegionPopulation = 0
-				
-				#VariableAtlanta and TotalAtlanta are already calculated, so I'm just pulling a row from the DB basically. 
+
+				#VariableAtlanta and TotalAtlanta are already calculated, so I'm just pulling a row from the DB basically.
 				variableAtlantaPopulation = int(sumVals[0][variableIndex])
 				totalAtlantaPopulation = int(sumVals[0][data_cols_to_skip])
 				totalRegionPopulation = 0
@@ -220,8 +216,8 @@ class Base_Output_Table(object):
 					regionString = str(columnsListCalc[regionIndex])[2:-3]
 					variableRegionPopulationString = str(round(variableRegionPopulation))
 
-					regionsString += " {\"region_name\" : \"" + regionString + "\",\n"
-					regionsString += "  \"total_region_population\" : " + variableRegionPopulationString + "}, \n"
+					regionsString += ' {"region_name" : "' + regionString + '",'
+					regionsString += '  "total_region_population" : ' + variableRegionPopulationString + '}, '
 
 				else :
 					if (variableWritten == 0) :
@@ -237,19 +233,15 @@ class Base_Output_Table(object):
 					totalRegionPopulationString = str(round(totalRegionPopulation))
 					totalAtlantaPopulationString = str(totalAtlantaPopulation)
 
-					outputLine = variableName + ", " + regionString + ", " + variableRegionPopulationString + ", " + variableAtlantaPopulationString + ", " + totalRegionPopulationString + ", " + totalAtlantaPopulationString
-					
-					variablesString += " {\"region_name\" : \"" + regionString + "\",\n"
-					variablesString += "  \"var_region_population\" : " + variableRegionPopulationString + "}, \n"
+					variablesString += ' {"region_name" : "' + regionString + '",'
+					variablesString += '  "var_region_population" : ' + variableRegionPopulationString + '}, '
 
 
-					# write to the CSV (comma separated columns, newline separated rows)
-					#fileToWrite.write(outputLine + "\n")
-			if(variableIndex != data_cols_to_skip) : 
-				variablesString = variablesString[:-3]
-				variablesString += "]},\n\n"
-			else : 
-				regionsString = regionsString[:-3]
+			if(variableIndex != data_cols_to_skip) :
+				variablesString = variablesString[:-2]
+				variablesString += "]},"
+			else :
+				regionsString = regionsString[:-2]
 				regionsString += "],"
 
 
@@ -257,8 +249,6 @@ class Base_Output_Table(object):
 
 		jsonString += regionsString
 		jsonString += variablesString + "]"
-		jsonString = jsonString[:-4] + "]}"
+		jsonString = jsonString[:-2] + "]}"
 		print(jsonString)
 		return jsonString
-
-

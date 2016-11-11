@@ -30,7 +30,7 @@ def getTableName(client_table_name) :
 			'Sex_Hours_Worked_Week_Over65' : SEX_HOURS_WORKED_WEEK_OVER65_Table.table_name,
 	}[client_table_name]
 
-def getTableObject(client_table_name) :
+def getEmploymentTableObject(client_table_name) :
 	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(client_table_name)]
 
 def parseAndInsertEmploymentData(csvFile, tableName, fromDate, toDate) :

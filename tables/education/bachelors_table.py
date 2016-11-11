@@ -6,7 +6,7 @@ class BACHELORS_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = BACHELORS_Table.table_name
-		self.columns = Base_Table.columns + ["Total population 25 years and over with a bachelor's degree or higher attainment","Arts, Humanities, and Other","Business","Education","Science and Engineering","Total Science and Engineering","Computers, Mathematics and Statistics","Biological, Agricultural, and Environmental Sciences","Physical and Related Sciences","Psychology","Social Sciences","Engineering","Multidisciplinary Studies","Related Fields","Arts, Humanities, and Other","Literature and Languages","Liberal Arts and History","Visual and Performing Arts","Communications","Other"]
+		self.columns = Base_Table.columns + ["Total: 25 years and over with bachelor's or higher degree","Arts, Humanities, and Other","Business","Education","Science and Engineering","Total Science and Engineering","Computers, Mathematics and Statistics","Biological, Agricultural, and Environmental Sciences","Physical and Related Sciences","Psychology","Social Sciences","Engineering","Multidisciplinary Studies","Related Fields","Arts, Humanities, and Other 2","Literature and Languages","Liberal Arts and History","Visual and Performing Arts","Communications","Other"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

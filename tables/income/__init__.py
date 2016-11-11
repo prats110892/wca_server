@@ -51,6 +51,8 @@ def getTableName(client_table_name) :
         		 'Wage_Salary' : WAGE_SALARY_Table.table_name
 	}[client_table_name]
 
+def getIncomeTableObject(table_name) :
+	return TABLE_NAME_TO_OBJECT_MAPPING[table_name]
 
 def parseAndInsertIncomeData(csvFile, tableName, fromDate, toDate) :
 	print(tableName)

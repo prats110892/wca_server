@@ -18,7 +18,7 @@ def getTableName(client_table_name) :
 			'Sex_School_Enrollment_Level' : SEX_SCHOOL_ENROLLMENT_LEVEL_Table.table_name,
 	}[client_table_name]
 
-def getTableObject(client_table_name) :
+def getEducationTableObject(client_table_name) :
 	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(client_table_name)]
 
 def parseAndInsertEducationData(csvFile, tableName, fromDate, toDate) :

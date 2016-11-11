@@ -33,7 +33,7 @@ def getTableName(client_table_name) :
 			'Sex_Age_Veteran': SEX_AGE_VETERAN_Table.table_name
 	}[client_table_name]
 
-def getTableObject(client_table_name) :
+def getDemographicsTableObject(client_table_name) :
 	return TABLE_NAME_TO_OBJECT_MAPPING[getTableName(client_table_name)]
 
 def parseAndInsertDemographicData(csvFile, tableName, fromDate, toDate) :

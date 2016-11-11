@@ -6,7 +6,7 @@ class SEX_SCHOOL_ENROLLMENT_ATTAINMENT_16_19_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = SEX_SCHOOL_ENROLLMENT_ATTAINMENT_16_19_Table.table_name
-		self.columns = Base_Table.columns + ["Population 16 to 19 years Enrolled in school","Employed","Unemployed","Not in labor force","Employed 16 - 19","High school graduate (includes equivalency): - Employed","Not high school graduate: - Employed","Unemployed 16-19","High school graduate (includes equivalency): - Unemployed	","Not high school graduate: - Unemployed","Not in labor force 16-19","High school graduate (includes equivalency): - Not in labor force","Not high school graduate: - Not in labor force","Not enrolled in school 16-19","Not enrolled in school: High school graduate","Not enrolled in school: Not High school graduate"]
+		self.columns = Base_Table.columns + ["Population 16 to 19 years Enrolled in school","Employed","Unemployed","Not in labor force","Employed 16 - 19","High school graduate (includes equivalency): - Employed","Not high school graduate: - Employed","Unemployed 16-19","High school graduate (includes equivalency): - Unemployed","Not high school graduate: - Unemployed","Not in labor force 16-19","High school graduate(includes equivalency) Not in labor force","Not high school graduate: - Not in labor force","Not enrolled in school 16-19","Not enrolled in school: High school graduate","Not enrolled in school: Not High school graduate"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

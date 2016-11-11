@@ -175,6 +175,8 @@ def getTableName(client_table_name) :
         		 'Year_Structure_Built' : YEAR_STRUCTURE_BUILT_Table.table_name
 	}[client_table_name]
 
+def getHousingTableObject(table_name) :
+	return TABLE_NAME_TO_OBJECT_MAPPING[table_name]
 
 def parseAndInsertHousingData(csvFile, tableName, fromDate, toDate) :
 	print(tableName)

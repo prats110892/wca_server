@@ -4,15 +4,16 @@ import time
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(CURRENT_DIRECTORY)
 
-from flask import Flask, request, redirect, url_for, send_from_directory, render_template, make_response, after_this_request
+from flask import Flask, request, redirect, url_for, send_from_directory, render_template, make_response, after_this_request, jsonify
 from flask_restful import Resource, Api, reqparse
 from werkzeug.utils import secure_filename
 from tables import parseAndInsertData, updateIdTableWithNewCSVFile, parseAndInsertCalculations
 from tables.categories import DataCategories
-from tables.demographics import getTableObject
+from tables import getTableObject
 from tables.calculations import getCalculationsTableObject
 from upload_response import getReponseBody
 from base_output_table import Base_Output_Table
+import json
 
 app = Flask(__name__)
 api = Api(app)
@@ -113,7 +114,7 @@ def download_data() :
 		print (category + " " + table_name + " " + str(forYear) + " " + region)
 
 		base_output_table = Base_Output_Table()
-		base_output_table.initalize(forYear, getTableObject(table_name), getCalculationsTableObject(region))
+		base_output_table.initalize(forYear, getTableObject(category, table_name), getCalculationsTableObject(region))
 		filename = base_output_table.getOutputCSVPath()
 		print (filename)
 		uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
@@ -142,14 +143,8 @@ class GetRegionDataAPI(Resource) :
 			print (str(k) + ":" + str(v))
 
 		baseOutputTable = Base_Output_Table()
-		baseOutputTable.initalize(2011, getTableObject("Relationship_Children"), getCalculationsTableObject("NPU"))
-		outputFileLocation = baseOutputTable.getOutputCSVPath()
-		return {
-			"name" : "some_name_here",
-			"fromYear" : 1993,
-			"toYear" : 1997,
-			"downloadLink" : outputFileLocation
-			}
+		baseOutputTable.initalize(args['date_from'], getTableObject(args['category'], args['table_name']), getCalculationsTableObject(args['region']))
+		return jsonify(baseOutputTable.getJSON())
 
 api.add_resource(GetRegionDataAPI, "/api/getregiondata", endpoint="getregiondata")
 
