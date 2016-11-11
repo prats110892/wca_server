@@ -1,5 +1,11 @@
 from id_table import ID_Table
 from demographics import parseAndInsertDemographicData
+from education import parseAndInsertEducationData
+from employment import parseAndInsertEmploymentData
+from health import parseAndInsertHealthData
+from housing import parseAndInsertHousingData
+from income import parseAndInsertIncomeData
+from transportation import parseAndInsertTransportationData
 from calculations import parseAndInsertCalculationsData
 from categories import DataCategories
 import base_table_class
@@ -30,22 +36,22 @@ def parseAndInsertData(category, csv_file, table_name, from_Date, to_Date) :
 		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
 	elif category.lower() == DataCategories.EDUCATION.lower() :
 		print("Inside Education")
-		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
+		parseAndInsertEducationData(csv_file, table_name, from_Date, to_Date)
 	elif category.lower() == DataCategories.EMPLOYMENT.lower() :
 		print("Inside Employment")
-		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
+		parseAndInsertEmploymentData(csv_file, table_name, from_Date, to_Date)
 	elif category.lower() == DataCategories.HEALTH.lower() :
 		print("Inside Health")
-		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
+		parseAndInsertHealthData(csv_file, table_name, from_Date, to_Date)
 	elif category.lower() == DataCategories.HOUSING.lower() :
 		print("Inside Housing")
-		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
+		parseAndInsertHousingData(csv_file, table_name, from_Date, to_Date)
 	elif category.lower() == DataCategories.INCOME.lower() :
 		print("Inside Income")
-		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
+		parseAndInsertIncomeData(csv_file, table_name, from_Date, to_Date)
 	elif category.lower() == DataCategories.TRANSPORTATION.lower() :
 		print("Inside Transportation")
-		parseAndInsertDemographicData(csv_file, table_name, from_Date, to_Date)
+		parseAndInsertTransportationData(csv_file, table_name, from_Date, to_Date)
 
 def parseAndInsertCalculations(csv_file, table_name, from_Date) :
 	print("Inside calculations")
