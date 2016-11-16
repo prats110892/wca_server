@@ -6,7 +6,7 @@ class SEX_HOURS_WORKED_WEEK_OVER65_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = SEX_HOURS_WORKED_WEEK_OVER65_Table.table_name
-		self.columns = Base_Table.columns + ["Total population 65 years and over","Worked in the past 12 months","Did not work in the past 12 months","65 years and over worked in the past 12 months","Usually worked 35 or more hours per week","Usually worked 15 to 34 hours per week","Usually worked 1 to 14 hours per week","65 years and over worked in the past 12 months","65 years and over worked 1 to 13 weeks in the past 12 months","14 to 26 weeks","27 to 39 weeks","40 to 47 weeks","48 and 49 weeks","50 to 52 weeks"]
+		self.columns = Base_Table.columns + ["Total population 65 years and over","Worked in the past 12 months","Did not work in the past 12 months","65 years and over worked in the past 12 months 1","Usually worked 35 or more hours per week","Usually worked 15 to 34 hours per week","Usually worked 1 to 14 hours per week","65 years and over worked in the past 12 months 2","65 years and over worked 1 to 13 weeks in the past 12 months","14 to 26 weeks","27 to 39 weeks","40 to 47 weeks","48 and 49 weeks","50 to 52 weeks"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
