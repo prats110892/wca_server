@@ -6,7 +6,7 @@ class TENURE_VEHICLES_AGE_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_VEHICLES_AGE_Table.table_name
-		self.columns = Base_Table.columns + ["Owner occupied: - No vehicle available","Householder 15 to 34 years","Householder 35 to 64 years","Householder 65 years and over","Owner occupied: - 1 or more vehicles available","Householder 15 to 34 years","Householder 35 to 64 years","Householder 65 years and over","Renter occupied: - No vehicle available","Householder 15 to 34 years","Householder 35 to 64 years","Householder 65 years and over","Renter occupied: - 1 or more vehicles available","Householder 15 to 34 years","Householder 35 to 64 years","Householder 65 years and over"]
+		self.columns = Base_Table.columns + ["Owner occupied: - No vehicle available","Householder 15 to 34 years 1","Householder 35 to 64 years 1","Householder 65 years and over 1","Owner occupied: - 1 or more vehicles available","Householder 15 to 34 years 2","Householder 35 to 64 years 2","Householder 65 years and over 2","Renter occupied: - No vehicle available","Householder 15 to 34 years 3","Householder 35 to 64 years 3","Householder 65 years and over 3","Renter occupied: - 1 or more vehicles available","Householder 15 to 34 years 4","Householder 35 to 64 years 4","Householder 65 years and over 4"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
