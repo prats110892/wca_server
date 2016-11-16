@@ -6,7 +6,7 @@ class TENURE_PLUMBING_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_PLUMBING_Table.table_name
-		self.columns = Base_Table.columns + ["Total occupied housing units","Owner occupied","Complete plumbing facilities","Lacking plumbing facilities","Renter occupied","Complete plumbing facilities","Lacking plumbing facilities"]
+		self.columns = Base_Table.columns + ["Total occupied housing units","Owner occupied","Complete plumbing facilities 1","Lacking plumbing facilities 1","Renter occupied","Complete plumbing facilities 2","Lacking plumbing facilities 2"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
