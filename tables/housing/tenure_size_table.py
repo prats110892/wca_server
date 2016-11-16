@@ -6,7 +6,7 @@ class TENURE_SIZE_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_SIZE_Table.table_name
-		self.columns = Base_Table.columns + ["Owner occupied","1-person","2-person","3-person","4-person","5-person","6-person","7-or-more person","Renter occupied","1-person","2-person","3-person","4-person","5-person","6-person","7-or-more person","Total occupied housing units","1-person","2-person","3-person","4-person","5-person","6-person","7-or-more person"]
+		self.columns = Base_Table.columns + ["Owner occupied","1-person 1","2-person 1","3-person 1","4-person 1","5-person 1","6-person 1","7-or-more person 1","Renter occupied","1-person 2","2-person 2","3-person 2","4-person 2","5-person 2","6-person 2","7-or-more person 2","Total occupied housing units","1-person 3","2-person 3","3-person 3","4-person 3","5-person 3","6-person 3","7-or-more person 3"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
