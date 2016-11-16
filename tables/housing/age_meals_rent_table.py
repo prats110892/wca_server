@@ -6,7 +6,7 @@ class AGE_MEALS_RENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = AGE_MEALS_RENT_Table.table_name
-		self.columns = Base_Table.columns + ["Householder 15 to 54 years","Meals included in rent","No meals included in rent","Householder 55 to 64 years","Meals included in rent","No meals included in rent","Householder 65 to 74 years","Meals included in rent","No meals included in rent","Householder 75 years and over","Meals included in rent","No meals included in rent"]
+		self.columns = Base_Table.columns + ["Householder 15 to 54 years","Meals included in rent 1","No meals included in rent 1","Householder 55 to 64 years","Meals included in rent 2","No meals included in rent 2","Householder 65 to 74 years","Meals included in rent 3","No meals included in rent 3","Householder 75 years and over","Meals included in rent 4","No meals included in rent 4"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
