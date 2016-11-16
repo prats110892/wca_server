@@ -6,7 +6,7 @@ class POVERTY_DISABILITY_EMPLOYMENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = POVERTY_DISABILITY_EMPLOYMENT_Table.table_name
-		self.columns = Base_Table.columns + ["Total population 20 to 64 years","Below poverty level","At or above poverty level","Below poverty level","With a disability","No disability","At or above poverty level","With a disability","No disability","With a disability - Below poverty level","Employed","Unemployed","Not in labor force","No disability - below poverty","Employed","Unemployed","Not in labor force","At or above poverty with disability","Employed","Unemployed","Not in labor force","At or above poverty no disability","Employed","Unemployed","Not in labor force"]
+		self.columns = Base_Table.columns + ["Total population 20 to 64 years","Below poverty level 1","At or above poverty level 1","Below poverty level 2","With a disability 1","No disability 1","At or above poverty level 2","With a disability 2","No disability 2","With a disability - Below poverty level","Employed 1","Unemployed 1","Not in labor force 1","No disability - below poverty","Employed 2","Unemployed 2","Not in labor force 2","At or above poverty with disability","Employed 3","Unemployed 3","Not in labor force 3","At or above poverty no disability","Employed","Unemployed","Not in labor force"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
