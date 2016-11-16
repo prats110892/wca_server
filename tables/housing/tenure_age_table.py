@@ -6,7 +6,7 @@ class TENURE_AGE_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_AGE_Table.table_name
-		self.columns = Base_Table.columns + ["Owner occupied	Householder 15 to 24 years","25 to 34 years","35 to 44 years","45 to 54 years","55 to 59 years","60 to 64 years","65 to 74 years","	75 to 84 years","85 years and over","Renter occupied","Householder 15 to 24 years","25 to 34 years","35 to 44 years","45 to 54 years","55 to 59 years","60 to 64 years","65 to 74 years","75 to 84 years","85 years and over"]
+		self.columns = Base_Table.columns + ["Owner occupied","Householder 15 to 24 years 1","25 to 34 years 1","35 to 44 years 1","45 to 54 years 1","55 to 59 years 1","60 to 64 years 1","65 to 74 years 1","75 to 84 years 1","85 years and over 1","Renter occupied","Householder 15 to 24 years 2","25 to 34 years 2","35 to 44 years 2","45 to 54 years 2","55 to 59 years 2","60 to 64 years 2","65 to 74 years 2","75 to 84 years 2","85 years and over 2"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
