@@ -6,7 +6,7 @@ class BEDROOMS_GROSS_RENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = BEDROOMS_GROSS_RENT_Table.table_name
-		self.columns = Base_Table.columns + ["Total renter-occupied housing units","No bedroom","Less than $200","$200 to $299","$300 to $499","$500 to $749","$750 to $999","$1,000 or more","No cash rent","1 bedroom","Less than $200","$200 to $299","$300 to $499","$500 to $749","$750 to $999","$1,000 or more","No cash rent","2 bedrooms","Less than $200","$200 to $299","$300 to $499","$500 to $749","$750 to $999","$1,000 or more","No cash rent","3 or more bedrooms","Less than $200","$200 to $299","$300 to $499","$500 to $749","$750 to $999","$1,000 or more","No cash rent"]
+		self.columns = Base_Table.columns + ["Total renter-occupied housing units","No bedroom","Less than $200 1","$200 to $299 1","$300 to $499 1","$500 to $749 1","$750 to $999 1","$1,000 or more 1","No cash rent 1","1 bedroom","Less than $200 2","$200 to $299 2","$300 to $499 2","$500 to $749 2","$750 to $999 2","$1,000 or more 2","No cash rent 2","2 bedrooms","Less than $200 3","$200 to $299 3","$300 to $499 3","$500 to $749 3","$750 to $999 3","$1,000 or more 3","No cash rent 3","3 or more bedrooms","Less than $200 4","$200 to $299 4","$300 to $499 4","$500 to $749 4","$750 to $999 4","$1,000 or more 4","No cash rent 4"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
