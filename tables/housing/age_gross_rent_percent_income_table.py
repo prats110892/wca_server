@@ -6,7 +6,7 @@ class AGE_GROSS_RENT_PERCENT_INCOME_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = AGE_GROSS_RENT_PERCENT_INCOME_Table.table_name
-		self.columns = Base_Table.columns + ["Total renter-occupied housing units","Householder 15 to 24 years","Less than 20.0 percent","20.0 to 24.9 percent","25.0 to 29.9 percent","30.0 to 34.9 percent","35.0 percent or more","Not computed","Householder 25 to 34 years","Less than 20.0 percent","20.0 to 24.9 percent","25.0 to 29.9 percent","30.0 to 34.9 percent","35.0 percent or more","Not computed","Householder 35 to 64 years","Less than 20.0 percent","20.0 to 24.9 percent","25.0 to 29.9 percent","30.0 to 34.9 percent","35.0 percent or more","Not computed","Householder 65 years and over","Less than 20.0 percent","20.0 to 24.9 percent","25.0 to 29.9 percent","30.0 to 34.9 percent","35.0 percent or more","Not computed"]
+		self.columns = Base_Table.columns + ["Total renter-occupied housing units","Householder 15 to 24 years","Less than 20.0 percent 1","20.0 to 24.9 percent 1","25.0 to 29.9 percent 1","30.0 to 34.9 percent 1","35.0 percent or more 1","Not computed 1","Householder 25 to 34 years","Less than 20.0 percent 2","20.0 to 24.9 percent 2","25.0 to 29.9 percent 2","30.0 to 34.9 percent 2","35.0 percent or more 2","Not computed 2","Householder 35 to 64 years","Less than 20.0 percent 3","20.0 to 24.9 percent 3","25.0 to 29.9 percent 3","30.0 to 34.9 percent 3","35.0 percent or more 3","Not computed 3","Householder 65 years and over","Less than 20.0 percent 4","20.0 to 24.9 percent 4","25.0 to 29.9 percent 4","30.0 to 34.9 percent 4","35.0 percent or more 4","Not computed 4"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
