@@ -6,7 +6,7 @@ class TENURE_VEHICLES_AVAILABLE_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_VEHICLES_AVAILABLE_Table.table_name
-		self.columns = Base_Table.columns + ["Total occupied housing units","No vehicle","1 vehicle","2 vehicles","3 vehicles","4 vehicles","5 or more","Owner occupied","No vehicle","1 vehicle","2 vehicles","3 vehicles","4 vehicles","5 or more","Renter occupied","No vehicle","1 vehicle","2 vehicles","3 vehicles","4 vehicles","5 or more"]
+		self.columns = Base_Table.columns + ["Total occupied housing units","No vehicle 1","1 vehicle 1","2 vehicles 1","3 vehicles 1","4 vehicles 1","5 or more 1","Owner occupied","No vehicle 2","1 vehicle 2","2 vehicles 2","3 vehicles 2","4 vehicles 2","5 or more 2","Renter occupied","No vehicle 3","1 vehicle 3","2 vehicles 3","3 vehicles 3","4 vehicles 3","5 or more 3"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
