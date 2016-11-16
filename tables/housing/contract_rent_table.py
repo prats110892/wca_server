@@ -6,7 +6,7 @@ class CONTRACT_RENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = CONTRACT_RENT_Table.table_name
-		self.columns = Base_Table.columns + ["Total renter-occupied housing units","Estimate; With cash rent:","Estimate; No cash rent","Estimate; With cash rent:","Less than $100","$100 to $149","Estimate; With cash rent: - ","$200 to $249","$250 to $299","$300 to $349","$350 to $399","$400 to $449","$450 to $499","$500 to $549","$550 to $599","$600 to $649","$650 to $699","$700 to $749","$750 to $799","$800 to $899","$900 to $999","$1,000 to $1,249","$1,250 to $1,499","$1,500 to $1,999","$2,000 or more"]
+		self.columns = Base_Table.columns + ["Total renter-occupied housing units","Estimate; With cash rent: 1","Estimate; No cash rent","Estimate; With cash rent: 2","Less than $100","$100 to $149","Estimate; With cash rent: - ","$200 to $249","$250 to $299","$300 to $349","$350 to $399","$400 to $449","$450 to $499","$500 to $549","$550 to $599","$600 to $649","$650 to $699","$700 to $749","$750 to $799","$800 to $899","$900 to $999","$1,000 to $1,249","$1,250 to $1,499","$1,500 to $1,999","$2,000 or more"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
