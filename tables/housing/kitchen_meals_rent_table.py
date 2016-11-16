@@ -6,7 +6,7 @@ class KITCHEN_MEALS_RENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = KITCHEN_MEALS_RENT_Table.table_name
-		self.columns = Base_Table.columns + ["Total renter-occupied housing units paying cash rent","Meals included in rent","No meals included in rent","Complete kitchen facilities:","Meals included in rent","No meals included in rent","Lacking complete kitchen facilities","Meals included in rent","No meals included in rent"]
+		self.columns = Base_Table.columns + ["Total renter-occupied housing units paying cash rent","Meals included in rent 1","No meals included in rent 1","Complete kitchen facilities:","Meals included in rent 2","No meals included in rent 2","Lacking complete kitchen facilities","Meals included in rent 3","No meals included in rent 3"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
