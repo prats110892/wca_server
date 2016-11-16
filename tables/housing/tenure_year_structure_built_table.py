@@ -6,7 +6,7 @@ class TENURE_YEAR_STRUCTURE_BUILT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_YEAR_STRUCTURE_BUILT_Table.table_name
-		self.columns = Base_Table.columns + ["Owner occupied","2010 or later","2000 to 2009","1990 to 1999","1980 to 1989","1970 to 1979","1960 to 1969","1950 to 1959","1940 to 1949","1939 or earlier","Renter occupied","2010 or later","2000 to 2009","1990 to 1999","1980 to 1989","1970 to 1979","1960 to 1969","1950 to 1959","1940 to 1949","1939 or earlier","Total occuiped housing units","2010 or later","2000 to 2009","1990 to 1999","1980 to 1989","1970 to 1979","1960 to 1969","1950 to 1959","1940 to 1949","1939 or earlier"]
+		self.columns = Base_Table.columns + ["Owner occupied","2010 or later 1","2000 to 2009 1","1990 to 1999 1","1980 to 1989 1","1970 to 1979 1","1960 to 1969 1","1950 to 1959 1","1940 to 1949 1","1939 or earlier 1","Renter occupied","2010 or later 2","2000 to 2009 2","1990 to 1999 2","1980 to 1989 2","1970 to 1979 2","1960 to 1969 2","1950 to 1959 2","1940 to 1949 2","1939 or earlier 2","Total occuiped housing units","2010 or later 3","2000 to 2009 3","1990 to 1999 3","1980 to 1989 3","1970 to 1979 3","1960 to 1969 3","1950 to 1959 3","1940 to 1949 3","1939 or earlier 3"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
