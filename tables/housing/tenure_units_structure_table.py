@@ -6,7 +6,7 @@ class TENURE_UNITS_STRUCTURE_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_UNITS_STRUCTURE_Table.table_name
-		self.columns = Base_Table.columns + ["Owner-occupied housing units","1, detached","1, attached","2","3 or 4","5 to 9","10 to 19","20 to 49","50 or more","Mobile home","Boat, RV, van, etc.","Estimate; Renter-occupied housing units:","1, detached","1, attached","2","3 or 4","5 to 9","10 to 19","20 to 49","50 or more","Mobile home","Boat, RV, van, etc.","Total occupied housing units","1, detached","1, attached","2","3 or 4","5 to 9","10 to 19","20 to 49","50 or more","Mobile home","Boat, RV, van, etc."]
+		self.columns = Base_Table.columns + ["Owner-occupied housing units","1, detached (1)","1, attached (1)","2 (1)","3 or 4 (1)","5 to 9 (1)","10 to 19 (1)","20 to 49 (1)","50 or more (1)","Mobile home (1)","Boat, RV, van, etc. (1)","Estimate; Renter-occupied housing units:","1, detached (2)","1, attached (2)","2 (2)","3 or 4 (2)","5 to 9 (2)","10 to 19 (2)","20 to 49 (2)","50 or more (2)","Mobile home (2)","Boat, RV, van, etc. (2)","Total occupied housing units","1, detached (3)","1, attached (3)","2 (3)","3 or 4 (3)","5 to 9 (3)","10 to 19 (3)","20 to 49 (3)","50 or more (3)","Mobile home (3)","Boat, RV, van, etc. (3)"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
