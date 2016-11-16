@@ -6,7 +6,7 @@ class HOUSEHOLD_TENURE_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = HOUSEHOLD_TENURE_Table.table_name
-		self.columns = Base_Table.columns + ["Married-couple family","Owner-occupied","Renter-occupied","Male householder, no wife present","Owner-occupied","Renter-occupied	Female householder, no husband present","Owner-occupied","Renter-occupied","Nonfamily households","Owner-occupied","Renter-occupied"]
+		self.columns = Base_Table.columns + ["Married-couple family","Owner-occupied 1","Renter-occupied 1","Male householder, no wife present","Owner-occupied 2","Renter-occupied 2","Female householder, no husband present","Owner-occupied 3","Renter-occupied 3","Nonfamily households","Owner-occupied 4","Renter-occupied 4"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
