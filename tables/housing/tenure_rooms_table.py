@@ -6,7 +6,7 @@ class TENURE_ROOMS_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TENURE_ROOMS_Table.table_name
-		self.columns = Base_Table.columns + ["Owner occupied","1 room","2 rooms","3 rooms","4 rooms","5 rooms","6 rooms","7 rooms","8 rooms","9 or more rooms","Renter occupied","1 room","2 rooms","3 rooms","4 rooms","5 rooms","6 rooms","7 rooms","8 rooms","9 or more rooms","Total occupied housing units","1 room","2 rooms","3 rooms","4 rooms","5 rooms","6 rooms","7 rooms","8 rooms","9 or more rooms"]
+		self.columns = Base_Table.columns + ["Owner occupied","1 room 1","2 rooms 1","3 rooms 1","4 rooms 1","5 rooms 1","6 rooms 1","7 rooms 1","8 rooms 1","9 or more rooms 1","Renter occupied","1 room 2","2 rooms 2","3 rooms 2","4 rooms 2","5 rooms 2","6 rooms 2","7 rooms 2","8 rooms 2","9 or more rooms 2","Total occupied housing units","1 room 3","2 rooms 3","3 rooms 3","4 rooms 3","5 rooms 3","6 rooms 3","7 rooms 3","8 rooms 3","9 or more rooms 3"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
