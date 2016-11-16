@@ -6,7 +6,7 @@ class HOUSEHOLD_65_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = HOUSEHOLD_65_Table.table_name
-		self.columns = Base_Table.columns + ["Total households","Households with one or more people 65 years and over","Households with no people 65 years and over","Households with one or more people 65 years and over","1-person household","2-or-more-person household","Households with no people 65 years and over","1-person households","2-or-more-person household"]
+		self.columns = Base_Table.columns + ["Total households","Households with one or more people 65 years and over 1","Households with no people 65 years and over 1","Households with one or more people 65 years and over 2","1-person household","2-or-more-person household 1","Households with no people 65 years and over 2","1-person households","2-or-more-person household 2"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
