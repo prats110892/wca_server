@@ -12,12 +12,12 @@
 			On the left is a list of columns. They are clickable buttons, and turn red when you click.
 				-This is used to select columns for mappings. You can click multiple buttons for a column summation
 				-Click 'Add' when you have a mapping ready
-			The middle column is for mappings.
+			The middle column is of mappings (from spreadsheet columns to SQL attributes)
 				-This will be populated with the mappings one at a time as you click 'Add'
+				-Selecting multiple columns will default to summation, but you can change the math operator by editing the entry field
 			The right column is a list of Entry fields. You use this to define the column names. 
 				-This will be populated with fields one at a time as you click 'Add'. 
 				-You can type in the actual column name
-			TODO: need some way to undo/clear out buttons in case you click one incorrectly. 
 		When you hit 'Finish', it will create the tablename_table.py class definition file. 
 			-It will probably overwrite whatever is there, so watch out. 
 			-It calls writeclassFile.py to do the actual file writing. 
@@ -44,9 +44,9 @@
 			
 			
 TODO:
+-Scrolling issues
 -figure something out for the __init__.py file updating 
 -do some null checking, so you don't accidentally add blank mappings or something
--possibly add an undo button to remove the last mapping you've added
--make sure it actually works
+
 
 
