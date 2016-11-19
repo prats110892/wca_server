@@ -22,16 +22,16 @@ class ID_Table(object):
 		return self.dbHelper.deleteTable(table_name)
 
 	def insertDataFromCSVFile(self, csvFileName) :
-		csvFile = open(csvFileName)
+		csvFile = open(csvFileName, 'rU')
 		csvReader = csv.reader(csvFile)
 		insertDataQuery = self.getInsertQueryForCSV(csvReader)
 		return self.dbHelper.executeQuery(insertDataQuery)
 
 	def getInsertQueryForCSV(self, csvReader) :
 		skipCount = 0
-		insertDataQuery = "INSERT INTO " + table_name + " VALUES "
+		insertDataQuery = "INSERT INTO " + ID_Table.table_name + " VALUES "
 		for row in csvReader:
-			if (skipCount < num_of_rows_to_leave) :
+			if (skipCount < ID_Table.num_of_rows_to_leave) :
 				skipCount += 1
 				continue
 

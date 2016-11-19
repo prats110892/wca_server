@@ -1,6 +1,6 @@
 
 class DataCategories(object) :
-	ID = "GEO-ID"
+	ID = "GEO_ID"
 	DEMOGRAPHICS = "demographics"
 	EDUCATION = "education"
 	EMPLOYMENT = "employment"

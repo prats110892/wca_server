@@ -6,7 +6,7 @@ class POVERTY_FAMILY_CHILDREN_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = POVERTY_FAMILY_CHILDREN_Table.table_name
-		self.columns = Base_Table.columns + ["Total number of families","In poverty1 ","At or above poverty 1","In poverty 2","In poverty Families with children under 5","In Poverty Families with children under 18","At or above poverty 2","Not in Poverty Families with children under 5","Not in poverty families under 18"]
+		self.columns = Base_Table.columns + ["Total number of families","In poverty 1","At or above poverty 1","In poverty 2","In poverty Families with children under 5","In Poverty Families with children under 18","At or above poverty 2","Not in Poverty Families with children under 5","Not in poverty families under 18"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

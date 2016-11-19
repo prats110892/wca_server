@@ -6,7 +6,7 @@ class WORKERS_SEX_PLACE_WORK_STATE_COUNTY_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = WORKERS_SEX_PLACE_WORK_STATE_COUNTY_Table.table_name
-		self.columns = Base_Table.columns + ["Total workers 16 years and over","Worked in Georgia","Worked outside Georgia","Worked in Georgia","Worked in county of residence","Worked outside county of residence"]
+		self.columns = Base_Table.columns + ["Total workers 16 years and over","Worked in Georgia 1","Worked outside Georgia","Worked in Georgia 2","Worked in county of residence","Worked outside county of residence"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

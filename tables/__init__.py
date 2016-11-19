@@ -1,3 +1,9 @@
+import os, sys
+import time
+
+CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(CURRENT_DIRECTORY)
+
 from id_table import ID_Table
 from demographics import parseAndInsertDemographicData, getDemographicsTableObject
 from education import parseAndInsertEducationData, getEducationTableObject
@@ -11,7 +17,7 @@ from categories import DataCategories
 import base_table_class
 import basic_calc_table
 import Dbhelper
-import wca_server
+
 
 TABLE_NAME_TO_OBJECT_MAPPING = {
 		 ID_Table.table_name : ID_Table()
@@ -62,7 +68,7 @@ def parseAndInsertData(category, csv_file, table_name, from_Date, to_Date) :
 	print(category)
 	if (category.lower() == DataCategories.ID.lower()) :
 		print("Inside ID")
-		updateIdTableWithNewCSVFile(csvFile=csv_file)
+		updateIdTableWithNewCSVFile(csv_file, table_name)
 
 	if category.lower() == DataCategories.DEMOGRAPHICS.lower() :
 		print("Inside Demographics")

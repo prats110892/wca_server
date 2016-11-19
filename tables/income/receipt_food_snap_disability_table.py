@@ -6,7 +6,7 @@ class RECEIPT_FOOD_SNAP_DISABILITY_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = RECEIPT_FOOD_SNAP_DISABILITY_Table.table_name
-		self.columns = Base_Table.columns + ["Total households","Household received Food Stamps/SNAP in the past 12 months","Household did not receive Food Stamps/SNAP in the past 12 months","Household received Food Stamps/SNAP in the past 12 months","Households with 1 or more persons with a disability","Households with no persons with a disability","Household did not receive Food Stamps/SNAP in the past 12 months","Households with 1 or more persons with a disabil","Households with no persons with a disability"]
+		self.columns = Base_Table.columns + ["Total households","Household received Food Stamps/SNAP in the past 12 months 1","Household did not receive Food Stamps/SNAP in the past 12 months 1","Household received Food Stamps/SNAP in the past 12 months 2","Households with 1 or more persons with a disability","Households with no persons with a disability 1","Household did not receive Food Stamps/SNAP in the past 12 months 2","Households with 1 or more persons with a disabil","Households with no persons with a disability 2"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

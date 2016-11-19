@@ -6,7 +6,7 @@ class MOBILITY_MSA_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = MOBILITY_MSA_Table.table_name
-		self.columns = Base_Table.columns + ["Total population 1 year and over living in a MSA","Same house 1 year ago","Different house in United States 1 year ago","Different house in United States 1 year ago","Moved from inside metro Atlanta","Moved from outside metro Atlanta","Lived abroad"]
+		self.columns = Base_Table.columns + ["Total population 1 year and over living in a MSA","Same house 1 year ago","Different house in United States 1 year ago 1","Different house in United States 1 year ago 2","Moved from inside metro Atlanta","Moved from outside metro Atlanta","Lived abroad"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
