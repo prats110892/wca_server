@@ -7,7 +7,7 @@
 	<meta name="author" content=" Sarthak Ghosh. Template by Vincent Gabriel">
 
 	<!-- Bootstrap and Jquery-->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='jquery.bootstrap.wizard.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='generalJS/dragAndDrop.js') }}"></script>
@@ -20,7 +20,21 @@
 	<link href="{{ url_for('static', filename='bootstrap/css/bootstrap-select.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='bootstrap/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='generalCSS/specialStyles.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="../static/jquery.bootstrap.wizard.js"></script>
+  <script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../static/generalJS/dragAndDrop.js"></script>
+  <script type="text/javascript" src="../static/generalJS/dataCategory.js"></script>
+  <script type="text/javascript" src="../static/bootstrap/js/bootstrap-select.js"></script>
+  <script type="text/javascript" src="../static/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+
+
+  <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+  <link href="../static/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <link href="../static/generalCSS/specialStyles.css" rel="stylesheet">
 
 		<script>
 				$(document).ready(function() {
@@ -55,6 +69,7 @@
             <li class="active"><a href="#">Upload New Data</a></li>
             <li><a href="/download_data">Download Data</a></li>
             <li><a href="/upload_calc">Upload new Calculations</a></li>
+            <li><a href="help.html">Help</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -140,7 +155,25 @@
 
 							<hr>
 				    	</div><!--div panel body-->
+
 		    		</div><!--panel success-->
+
+            <div class="panel panel-default panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">Help</h3>
+              </div>
+              <div class="panel-body">
+
+                <div class="form-inline">
+                    <div class="form-group">
+                    </div>
+                </div>
+
+
+              </br>
+            </div>
+          </div>
+
 
 
 					<button type="button" class="btn btn-success btn-lg" style="float:right" onclick="validateAndSubmit()">Upload</button>
