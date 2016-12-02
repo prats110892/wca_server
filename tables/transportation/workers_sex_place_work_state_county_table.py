@@ -12,7 +12,7 @@ class WORKERS_SEX_PLACE_WORK_STATE_COUNTY_Table(Base_Table):
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
 		skipCount = 0
-		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
+		insertDataQuery = """REPLACE INTO `{0}` VALUES """.format(self.table_name)
 		for line in csvFile:
 			row = line.split(",")
 			if (skipCount < Base_Table.num_of_rows_to_leave) :
