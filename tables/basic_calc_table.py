@@ -6,7 +6,8 @@ class Base_Calc_Table(object):
 
 	columns = ["From Year", "Id"] # Just a default definition. You still have to add to all the others
 	column_data_types = ["INT", "VARCHAR(50) NOT NULL", "FLOAT"] # If all the columns other than id are the same datatype then just 2 entries needed
-	table_extra_meta_data = "FOREIGN KEY(" + columns[1] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + ")"
+	table_extra_meta_data = "FOREIGN KEY(" + columns[1] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + "), "
+	table_extra_meta_data += "PRIMARY KEY(`" + columns[0] + "`, `" + columns[1] + "`)"
 	num_of_rows_to_leave = 1
 
 	def initalize(self) :
