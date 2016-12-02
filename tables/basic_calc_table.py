@@ -28,7 +28,7 @@ class Base_Calc_Table(object):
 
 	def getInsertQueryForCSV(self, csvFile, fromYear) :
 		skipCount = 0
-		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
+		insertDataQuery = """REPLACE INTO `{0}` VALUES """.format(self.table_name)
 		for line in csvFile:
 			row = line.split(",")
 			if (skipCount < Base_Calc_Table.num_of_rows_to_leave) :
