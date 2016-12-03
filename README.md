@@ -13,3 +13,7 @@ The classes of data (such as Race, Relationship_Children, or Median_Age_Sex) are
 A primary use of the system is to upload a raw CSV file (which comes from the US Census usually), and put it into the database. You can also retrieve the formatted CSV which is used on the Data Dashboard itself. The key difference between the original file and the formatted file is that the original contains data for each census block, and the formatted data contains sums for larger regions such as NPU, ZIP code or Neighborhood. 
 
 The system also allows for data access in the JSON standard, which can be used to write data-scraping programs without the necessity of parsing through a CSV. 
+
+# Sustainability
+
+The file CreateTableClass.py provides a template for our sustainability workflow. It is not currently integrated into the web-app, but a web-app version of this Python tool could be created. It essentially is a tool to build class files for new types of data which don't currently exist in the system. The use of this file is described in README-sustainability.txt
