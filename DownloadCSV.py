@@ -3,54 +3,8 @@ import os
 import math
 from tables import Dbhelper
 
+#i'm not sure if we still use this file -- I think the functionality has been superseded in base_output_table.py
 
-
-
-#this was used to initialize the calculations table
-#this functionality doesn't exist yet in the web app as far as I could see
-createQuery = "CREATE TABLE CALC_NPU (Id VARCHAR(50), "
-
-for i in range(26) :
-	 createQuery = createQuery + chr(i + 97) + " DOUBLE, "
-
-createQuery = createQuery[:-2] + ");"
-
-#print(createQuery)
-
-def __init__(self) :
-	self.db = None
-
-#I'm connecting to the database in this file
-#TODO: switch it so the executes are handled in Dbhelper
-self = MySQLdb.connect(host="localhost",  # your host, usually localhost
-							user="root",         # your username
-							passwd="coolness",
-							db="wca_data_dashboard")
-
-#don't think I use this one
-def executeQuery(query) :
-	#self.openConnection()
-	cursor = self.cursor()
-	cursor.execute(query)
-	self.commit()
-	self.close()
-	return cursor
-
-#executeQuery(createQuery);
-
-
-#loads data into calc_npu
-cursor = self.cursor()
-"""f = open("calcnpu.csv", 'r')
-for line in f :
-	insertQuery = "insert into CALC_NPU values (" + line + ");"
-	print
-	#cursor.execute(insertQuery)
-"""
-
-data_table_name = 'RELATIONSHIP_CHILDREN'
-region_table_name = 'CALC_NPU'
-data_year = 2011
 
 def getColumnNames(table_name) :
 	getColumnsQuery = "SELECT `COLUMN_NAME` " \
@@ -71,7 +25,6 @@ def getMostRecentYear(fromYear, table_name) :
 
 
 
-#todo: generalize to a function(year, table, region)
 #take in region, year, tablename
 def makeCSV(dataYear, data_table_name, region_table_name) :
 	#this gets a matrix of all the calc_npu data
