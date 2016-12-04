@@ -36,7 +36,9 @@ def allowed_file(filename) :
 @app.route("/")
 def root_path() :
 	return "Something else will come here"
-
+@app.route("/help", methods=["GET", "POST"])
+def help():
+	return render_template("help.html");
 
 #this is for the upload data workflow (types of data rather than geographic calculations files)
 @app.route("/upload_data", methods=["GET", "POST"])
