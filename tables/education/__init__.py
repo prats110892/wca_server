@@ -14,8 +14,8 @@ def getTableName(client_table_name) :
 	return {
 			'Bachelors' : BACHELORS_Table.table_name,
 			'Educational_Attainment' : EDUCATIONAL_ATTAINMENT_Table.table_name,
-			'Sex_School_Enrollment_Attainment_16_19' : SEX_SCHOOL_ENROLLMENT_ATTAINMENT_16_19_Table.table_name,
-			'Sex_School_Enrollment_Level' : SEX_SCHOOL_ENROLLMENT_LEVEL_Table.table_name,
+			'Sex_School_Enrolment_Attainment' : SEX_SCHOOL_ENROLLMENT_ATTAINMENT_16_19_Table.table_name,
+			'Sex_School_Enrolment' : SEX_SCHOOL_ENROLLMENT_LEVEL_Table.table_name,
 	}[client_table_name]
 
 def getEducationTableObject(client_table_name) :

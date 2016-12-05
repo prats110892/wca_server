@@ -12,7 +12,7 @@ class SEX_SCHOOL_ENROLLMENT_LEVEL_Table(Base_Table):
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
 		skipCount = 0
-		insertDataQuery = """REPLACE INTO `{0}` VALUES """.format(self.table_name)
+		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
 		for line in csvFile:
 			row = line.split(",")
 			if (skipCount < Base_Table.num_of_rows_to_leave) :
@@ -22,7 +22,7 @@ class SEX_SCHOOL_ENROLLMENT_LEVEL_Table(Base_Table):
 			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
 			dataQuery = "%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, \
                        %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, \
-                       %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d" %(int(row[3]), #B
+                       %d, %d, %d, %d, %d" %(int(row[3]), #B
 										int(row[5])+int(row[29]), #C
 										int(row[27])+int(row[51]), #D
                                                          int(row[5])+int(row[29]), #E
