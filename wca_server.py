@@ -1,8 +1,3 @@
-# This is the top-level python file which runs the server
-
-# it handles the HTTP calls on a given page and calls the necessary python scripts to perform
-# a task, such as uploading a new data file
-
 import os, sys
 import time
 
@@ -24,7 +19,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-UPLOAD_FOLDER = CURRENT_DIRECTORY + "/uploads"
+UPLOAD_FOLDER = CURRENT_DIRECTORY + "\\uploads"
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -35,13 +30,8 @@ def allowed_file(filename) :
 
 @app.route("/")
 def root_path() :
-	return render_template("upload_scrolling.html")
+	return "Something else will come here"
 
-@app.route("/help", methods=["GET", "POST"])
-def help():
-	return render_template("help.html");
-
-#this is for the upload data workflow (types of data rather than geographic calculations files)
 @app.route("/upload_data", methods=["GET", "POST"])
 def upload_data_file() :
 	if request.method == "POST" :
@@ -71,7 +61,6 @@ def upload_data_file() :
 			return render_template("upload_response.html")
 	return render_template("upload_scrolling.html")
 
-#this is the upload calculations workflow (where you upload a region calc file such as NPU, ZIP code, or neighborhood
 @app.route('/upload_calc', methods=["GET", "POST"])
 def upload_calc_file() :
 	if request.method == "POST" :
@@ -100,7 +89,6 @@ def deleteExistingFiles() :
 	for file in listOfFiles :
 		os.remove(os.path.join(UPLOAD_FOLDER, file))
 
-#this is the download data page, where you download a formatted CSV of data for a given region
 @app.route("/download_data", methods=["GET", "POST"])
 def download_data() :
 	deleteExistingFiles()
@@ -137,7 +125,8 @@ def download_data() :
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+	return send_from_directory(app.config['UPLOAD_FOLDER'],
+								filename)
 
 class GetRegionDataAPI(Resource) :
 	def __init__(self) :

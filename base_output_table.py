@@ -1,6 +1,3 @@
-# this file is used to create the output CSV for a class of data and a given region
-# it also has the function which creates the JSON for the API functionality
-
 import os
 from tables.Dbhelper import Dbhelper
 from tables.base_table_class import Base_Table
@@ -8,7 +5,6 @@ from tables.basic_calc_table import Base_Calc_Table
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = CURRENT_DIRECTORY + "/uploads"
-
 
 class Base_Output_Table(object):
 	"This is the base table class that all other table classes will extend"
@@ -23,10 +19,6 @@ class Base_Output_Table(object):
 		self.columns = ["Year", self.calcTableObjectName]
 		self.populateMatrices()
 
-	#this function is used to get the column names for a table
-	
-	#it calls the virtual SQL table INFORMATION_SCHEMA which has all the 
-	#metadata for a given table
 	def getColumnNames(self, table_name) :
 		getColumnsQuery = "SELECT `COLUMN_NAME` " \
 		"FROM `INFORMATION_SCHEMA`.`COLUMNS` " \
@@ -35,10 +27,6 @@ class Base_Output_Table(object):
 		getColumnsQuery = getColumnsQuery + "\'" + table_name + "\';"
 		return self.dbHelper.executeQuery(getColumnsQuery).fetchall()
 
-	#this is used to get the sums for a data attribute
-	
-	#these are pre-calculated in the Excel spreadsheets we work with, 
-	#so its not necessary to get the sums ourselves. 
 	def getSumNumbers(self, table_name) :
 		#321M200US131206004000 is the GEO_ID for the whole city of atlanta.
 		#selecting this row is useful because it contains the total of each column for Atlanta
@@ -46,9 +34,6 @@ class Base_Output_Table(object):
 
 		return self.dbHelper.executeQuery(selectQuery).fetchall()
 
-	#this populates the matrices that we loop through in this file
-	
-	#it selects all the data from the DB, then we work with the arrays in the other functions
 	def populateMatrices(self) :
 		self.dataMatrix = []
 		self.calcMatrix = []
@@ -58,11 +43,8 @@ class Base_Output_Table(object):
 		for row in joinedData :
 			self.dataMatrix.append(row[:len(self.dataTableObject.columns)])
 			self.calcMatrix.append(row[len(self.dataTableObject.columns):])
+		#print(str(len(self.dataMatrix)) + ", " + str(len(self.calcMatrix)))
 
-	# this is used to make sure we are getting the most recent possible year for a calc file
-	
-	# its possible to have multiple years of calc files, since the regions can change
-	# so, we want to use the most recent one that works with the data we have
 	def getImmediateCalcYear(self, requestedYear) :
 		query = "SELECT `{0}` FROM `{1}` WHERE `{0}`<={2};".format(Base_Calc_Table.columns[0], self.calcTableObjectName, requestedYear)
 		cursor = self.dbHelper.executeQuery(query)
@@ -72,16 +54,13 @@ class Base_Output_Table(object):
 				immediateYear = int(row[0])
 		return immediateYear
 
-	#this is the function that actually makes the CSV file
-
-	#it creates a new CSV and returns the path to the new file
 	def getOutputCSVPath(self) :
 		#this gets a matrix of all the calc_npu data
 		regionTableMatrix = self.calcMatrix
 		dataTableMatrix = self.dataMatrix
 
-		#print (len(regionTableMatrix))
-		#print (len(dataTableMatrix))
+		print (len(regionTableMatrix))
+		print (len(dataTableMatrix))
 
 		#this can probably be gotten from base table metadata.
 		calc_cols_to_skip = len(Base_Calc_Table.columns)
@@ -167,10 +146,7 @@ class Base_Output_Table(object):
 		os.rename(os.path.join(CURRENT_DIRECTORY, filename), os.path.join(UPLOAD_FOLDER, filename))
 		return filename
 
-	# this is similar to the CSV creator function, 
-	# but instead of making a file, it returns a big JSON string
-	
-	# this is useful for the API call functionality
+
 	def getJSON(self) :
 		#this gets a matrix of all the calc_npu data
 		regionTableMatrix = self.calcMatrix
@@ -274,5 +250,5 @@ class Base_Output_Table(object):
 		jsonString += regionsString
 		jsonString += variablesString + "]"
 		jsonString = jsonString[:-2] + "]}"
-		#print(jsonString)
+		print(jsonString)
 		return jsonString
