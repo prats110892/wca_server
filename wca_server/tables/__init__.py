@@ -7,11 +7,11 @@ sys.path.append(CURRENT_DIRECTORY)
 from id_table import ID_Table
 from demographics import parseAndInsertDemographicData, getDemographicsTableObject
 from education import parseAndInsertEducationData, getEducationTableObject
-# from employment import parseAndInsertEmploymentData, getEmploymentTableObject
-# from health import parseAndInsertHealthData, getHealthTableObject
-# from housing import parseAndInsertHousingData, getHousingTableObject
-# from income import parseAndInsertIncomeData, getIncomeTableObject
-# from transportation import parseAndInsertTransportationData, getTransportationTableObject
+from employment import parseAndInsertEmploymentData, getEmploymentTableObject
+from health import parseAndInsertHealthData, getHealthTableObject
+from housing import parseAndInsertHousingData, getHousingTableObject
+from income import parseAndInsertIncomeData, getIncomeTableObject
+from transportation import parseAndInsertTransportationData, getTransportationTableObject
 from calculations import parseAndInsertCalculationsData, getCalculationsTableObject
 from categories import DataCategories
 import base_table_class
