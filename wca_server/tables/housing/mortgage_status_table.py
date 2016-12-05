@@ -6,7 +6,7 @@ class MORTGAGE_STATUS_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = MORTGAGE_STATUS_Table.table_name
-		self.columns = Base_Table.columns + ["Total owner-occupied housing units","With a mortgage, contract to purchase, or similar debt 1","Without a mortgage","With a mortgage, contract to purchase, or similar debt 2","With either a second mortgage or home equity loan, but not both: - Second mortgage only","With either a second mortgage or home equity loan, but not both: - Home equity loan only","Both second mortgage and home equity loan","No second mortgage and no home equity loan"]
+		self.columns = Base_Table.columns + ["Total owner-occupied housing units","With a mortgage, contract to purchase, or similar debt 1","Without a mortgage","With a mortgage, contract to purchase, or similar debt 2","With second mortgage but no home equity loan","With home equity loan, but no second mortgage","Both second mortgage and home equity loan","No second mortgage and no home equity loan"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

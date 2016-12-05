@@ -6,7 +6,7 @@ class AGGREGATE_CONTRACT_RENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = AGGREGATE_CONTRACT_RENT_Table.table_name
-		self.columns = Base_Table.columns + ["Aggregate contract rent for renter-occupied housing units paying cash rent"]
+		self.columns = Base_Table.columns + ["Aggregate contract rent for renter-occupied units paying cash"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

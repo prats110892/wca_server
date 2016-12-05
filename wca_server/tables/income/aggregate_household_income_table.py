@@ -6,7 +6,7 @@ class AGGREGATE_HOUSEHOLD_INCOME_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = AGGREGATE_HOUSEHOLD_INCOME_Table.table_name
-		self.columns = Base_Table.columns + ["Aggregate household income in the past 12 months (in 2014 Inflation-adjusted dollars)"]
+		self.columns = Base_Table.columns + ["Aggregate household income past 12 months (2014 Inflation-adjusted)"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

@@ -6,7 +6,7 @@ class TOTAL_POP_TENURE_UNITS_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = TOTAL_POP_TENURE_UNITS_Table.table_name
-		self.columns = Base_Table.columns + ["Owner occupied","1, detached or attached (1)","2 to 4 (1)","5 or more (1)","Mobile home (1)","Boat, RV, van, etc. (1)","Estimate; Renter occupied:","1, detached or attached (2)","2 to 4 (2)","5 or more (2)","Mobile home (2)","Boat, RV, van, etc. (2)","Total population in occupied housing units by tenure by units in structure","1, detached or attached (3)","2 to 4 (3)","5 or more (3)","Mobile home (3)","Boat, RV, van, etc. (3)"]
+		self.columns = Base_Table.columns + ["Owner occupied","1, detached or attached (1)","2 to 4 (1)","5 or more (1)","Mobile home (1)","Boat, RV, van, etc. (1)","Estimate; Renter occupied:","1, detached or attached (2)","2 to 4 (2)","5 or more (2)","Mobile home (2)","Boat, RV, van, etc. (2)","Total in occupied housing units by tenure by units in structure","1, detached or attached (3)","2 to 4 (3)","5 or more (3)","Mobile home (3)","Boat, RV, van, etc. (3)"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 

@@ -25,7 +25,7 @@ class SEX_CLASS_Table(Base_Table):
 										int(row[8])+int(row[18]), #D
                                                          int(row[9])+int(row[19]), #E
 										int(row[10])+int(row[20]), #F
-                                                         int(row(11))+int(row[21]), #G
+                                                         int(row[11])+int(row[21]), #G
 										int(row[12])+int(row[22]), #H
                                                          int(row[13])+int(row[23]), #I
 										int(row[5])+int(row[15]), #J
