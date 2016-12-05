@@ -20,13 +20,13 @@ TABLE_NAME_TO_OBJECT_MAPPING = {
 
 def getTableName(client_table_name) :
 	return {
-			'Age_Own_Children_Living_Arrangements_Employment' : AGE_OWN_CHILDREN_LIVING_ARRANGEMENTS_EMPLOYMENT_Table.table_name,
+			'Age_Own_Children_Living_Arrangements' : AGE_OWN_CHILDREN_LIVING_ARRANGEMENTS_EMPLOYMENT_Table.table_name,
 			'Employment' : EMPLOYMENT_Table.table_name,
-			'Full_Time_Year_Round_Work' : FULL_TIME_YEAR_ROUND_WORK_Table.table_name,
+			'Full_Time_Year_Around_Work' : FULL_TIME_YEAR_ROUND_WORK_Table.table_name,
 			'Own_Children_Employment_Status' : OWN_CHILDREN_EMPLOYMENT_STATUS_Table.table_name,
 			'Poverty_Disability_Employment' : POVERTY_DISABILITY_EMPLOYMENT_Table.table_name,
-			'Sex_Class_Table' : SEX_CLASS_Table.table_name,
-			'Sex_Hours_Worked_Week_16_65' : SEX_HOURS_WORKED_WEEK_16_65_Table.table_name,
+			'Sex_Class' : SEX_CLASS_Table.table_name,
+			'Sex_Hours_Worked_Week' : SEX_HOURS_WORKED_WEEK_16_65_Table.table_name,
 			'Sex_Hours_Worked_Week_Over65' : SEX_HOURS_WORKED_WEEK_OVER65_Table.table_name,
 	}[client_table_name]
 
