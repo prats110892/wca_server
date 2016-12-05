@@ -6,7 +6,7 @@ TABLE_NAME_TO_OBJECT_MAPPING = {
 
 def getTableName(client_table_name) :
 	return {
-			'Health_Insurance' : HEALTH_INSURANCE_Table.table_name,
+			'Health_insurance' : HEALTH_INSURANCE_Table.table_name,
 	}[client_table_name]
 
 def getHealthTableObject(client_table_name) :
