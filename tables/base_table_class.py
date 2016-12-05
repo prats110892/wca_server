@@ -7,9 +7,8 @@ class Base_Table(object):
 	num_of_rows_to_leave = 2
 	columns = ["From Year", "To Year", "Id"] # Just a default definition. You still have to add to all the others
 	column_data_types = ["INT", "INT", "VARCHAR(50) NOT NULL", "BIGINT"] # If all the columns other than id are the same datatype then just 2 entries needed
-	table_extra_meta_data = "FOREIGN KEY(" + columns[2] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + "), "
-	table_extra_meta_data += "PRIMARY KEY(`" + columns[0] + "`, `" + columns[1] + "`, `" + columns[2] + "`)"
-	
+	table_extra_meta_data = "FOREIGN KEY(" + columns[2] + ") REFERENCES " + ID_Table.table_name + "(" + ID_Table.columns[0] + ")"
+
 	def initalize(self) :
 		self.dbHelper = Dbhelper()
 		if self.dbHelper.checkIfTableExists(self.table_name) is False:
