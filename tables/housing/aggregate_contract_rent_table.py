@@ -6,13 +6,13 @@ class AGGREGATE_CONTRACT_RENT_Table(Base_Table):
 
 	def __init__(self) :
 		self.table_name = AGGREGATE_CONTRACT_RENT_Table.table_name
-		self.columns = Base_Table.columns + ["Aggregate contract rent for renter-occupied housing units paying cash rent"]
+		self.columns = Base_Table.columns + ["Aggregate contract rent for renter-occupied units paying cash"]
 		self.table_extra_meta_data = Base_Table.table_extra_meta_data
 		self.initalize()
 
 	def getInsertQueryForCSV(self, csvFile, fromYear, toYear) :
 		skipCount = 0
-		insertDataQuery = """REPLACE INTO `{0}` VALUES """.format(self.table_name)
+		insertDataQuery = """INSERT INTO `{0}` VALUES """.format(self.table_name)
 		for line in csvFile:
 			row = line.split(",")
 			if (skipCount < Base_Table.num_of_rows_to_leave) :
