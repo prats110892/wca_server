@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -22,9 +22,9 @@ a {
   text-decoration: none;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 header {
@@ -58,6 +58,7 @@ header {
   display: table;
   clear: both;
 }
+
 @media only screen and (min-width: 768px) {
   .cd-faq {
     position: relative;
@@ -108,9 +109,6 @@ header {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
   .cd-faq-categories a {
-    
-    
-  
     padding-left: 24px;
     padding: 0 24px;
     -webkit-transition: background 0.2s, padding 0.2s;
@@ -122,6 +120,7 @@ header {
   }
   .no-touch .cd-faq-categories a:hover {
     background: #555b61;
+		color: yellow;
   }
   .no-js .cd-faq-categories {
     width: 100%;
@@ -138,7 +137,7 @@ header {
   }
   .cd-faq-categories a::before {
     /* decorative rectangle on the left visible for the selected item */
-    display: block;
+    /*display: block;
     top: 0;
     right: auto;
     left: 0;
@@ -148,13 +147,13 @@ header {
     opacity: 0;
     -webkit-transition: opacity 0.2s;
     -moz-transition: opacity 0.2s;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s;*/
   }
   .cd-faq-categories .selected {
-    background: #42464b !important;
+    /*background: #42464b;*/
   }
   .cd-faq-categories .selected::before {
-    opacity: 1;
+    /*opacity: 1;*/
   }
   .cd-faq-categories.is-fixed {
     /* top and left value assigned in jQuery */

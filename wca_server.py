@@ -24,7 +24,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-UPLOAD_FOLDER = CURRENT_DIRECTORY + "\\uploads"
+UPLOAD_FOLDER = CURRENT_DIRECTORY + "/uploads"
 ALLOWED_EXTENSIONS = set(['csv'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -35,7 +35,8 @@ def allowed_file(filename) :
 
 @app.route("/")
 def root_path() :
-	return "Something else will come here"
+	return render_template("upload_scrolling.html")
+
 @app.route("/help", methods=["GET", "POST"])
 def help():
 	return render_template("help.html");
@@ -136,8 +137,7 @@ def download_data() :
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-	return send_from_directory(app.config['UPLOAD_FOLDER'],
-								filename)
+	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 class GetRegionDataAPI(Resource) :
 	def __init__(self) :
