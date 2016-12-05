@@ -1,5 +1,7 @@
-from wca_server import CURRENT_DIRECTORY
 import os
+
+CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(CURRENT_DIRECTORY)
 
 def getReponseBody(responseText) :
 	os.remove(os.path.join(CURRENT_DIRECTORY + "/templates/upload_response.html"))
