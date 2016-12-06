@@ -116,7 +116,7 @@ def getTableName(client_table_name) :
     		 'Aggregate_Contract_Rent' : AGGREGATE_CONTRACT_RENT_Table.table_name,
     		 'Aggregate_Gross_Rent' : AGGREGATE_GROSS_RENT_Table.table_name,
     		 'Aggregate_Number_Vehicles_Tenure' : AGGREGATE_NUMBER_VEHICLES_TENURE_Table.table_name,
-    		 'Aggregate_Rooms_Tenure,' : AGGREGATE_ROOMS_TENURE_Table.table_name,
+    		 'Aggregate_Rooms_Tenure' : AGGREGATE_ROOMS_TENURE_Table.table_name,
     		 'Aggregate_Number_Rooms' : AGGREGATE_NUMBER_ROOMS_Table.table_name,
     		 'Bedrooms_Gross_Rent' : BEDROOMS_GROSS_RENT_Table.table_name,
     		 'Bedrooms' : BEDROOMS_Table.table_name,
