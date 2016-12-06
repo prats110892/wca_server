@@ -27,7 +27,7 @@ class TENURE_VEHICLES_AVAILABLE_Table(Base_Table):
                                                          int(row[7])+int(row[14]), #E
 										int(row[8])+int(row[15]), #F
                                                          int(row[9])+int(row[16]), #G
-										int(row[10]+int(row[17])), #H
+										int(row[10])+int(row[17]), #H
                                                          int(row[4]), #I
 										int(row[5]), #J
                                                          int(row[6]), #K
