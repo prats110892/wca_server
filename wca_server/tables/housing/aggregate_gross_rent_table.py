@@ -20,7 +20,7 @@ class AGGREGATE_GROSS_RENT_Table(Base_Table):
 				continue
 
 			defaultQuery = self.getIDAndYearQueryForRow(row, fromYear, toYear)
-			dataQuery = "%d" %(int(row[3])), #B
+			dataQuery = "%d" %(int(row[3])) #B
 			insertDataQuery += "(" + defaultQuery + dataQuery + "),"
 
 		insertDataQuery = insertDataQuery[:-1]
