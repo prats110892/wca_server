@@ -123,7 +123,7 @@ def getTableName(client_table_name) :
     		 'Contract_Rent' : CONTRACT_RENT_Table.table_name,
     		 'Gross_Rent_Percentage_Income' : GROSS_RENT_PERCENTAGE_INCOME_Table.table_name,
     		 'Gross_Rent' : GROSS_RENT_Table.table_name,
-    		 'Household_65_table' : HOUSEHOLD_65_Table.table_name,
+    		 'Household_65' : HOUSEHOLD_65_Table.table_name,
     		 'Household_Nonrelatives' : HOUSEHOLD_NONRELATIVES_Table.table_name,
     		 'Household_Relatives' : HOUSEHOLD_RELATIVES_Table.table_name,
     		 'Household_Tenure' : HOUSEHOLD_TENURE_Table.table_name,
