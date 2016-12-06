@@ -10,7 +10,7 @@ var details_options = {
                     'Inclusion_Utilities_Rent','Bedrooms_Gross_Rent','Aggregate_Gross_Rent','Gross_Rent','Rent_Asked','Aggregate_Contract_Rent',
                     'Contract_Rent','Age_Meals_Rent','Kitchen_Meals_Rent','Tenure_Kitchen','Kitchen','Tenure_Plumbing','Plumbing','Aggregate_Number_Vehicles_Tenure',
                     'Tenure_Vehicles_Age','Tenure_Vehicles_Available','Tenure_Telephone_Age','Tenure_Bedrooms','Bedrooms','Tenure_Year_Moved_Into',
-                    'Tenure_Year_Stucture_Built','Year_Structure_Built','Total_Pop_Tenure_Units','Tenure_Units_Structure','Units_Structure','Aggregate_Rooms_Tenure,',
+                    'Tenure_Year_Stucture_Built','Year_Structure_Built','Total_Pop_Tenure_Units','Tenure_Units_Structure','Units_Structure','Aggregate_Rooms_Tenure',
                     'Tenure_Rooms','Aggregate_Number_Rooms','Rooms','Tenure_Occupants_Room','Tenure_Size','Total_Pop_Occupied_Tenure','Tenure_Age','Race_Householder',
                     'Vacancy','Tenure','Occupancy','Housing_Units','Household_Type_Size','Household_NonRelatives','Household_Tenure','Household_65','Household_Relatives',
                     'Household_Type'],
