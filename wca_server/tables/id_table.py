@@ -6,7 +6,7 @@ class ID_Table(object):
 
 	table_name = "GEO_ID"
 	columns = ["Id", "Id2", "Geography"]
-	column_data_types = ["VARCHAR(50) NOT NULL", "BIGINT", "VARCHAR(200)"]
+	column_data_types = ["VARCHAR(50) NOT NULL", "VARCHAR(50)", "VARCHAR(200)"]
 	table_extra_meta_data = "PRIMARY KEY(" + columns[0] + ")"
 	num_of_rows_to_leave = 2
 
